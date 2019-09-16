@@ -1,0 +1,49 @@
+@import 'scss/_autoload';
+
+.live-transmission
+{
+	padding: 0px 10px;
+
+	display: grid;
+
+	grid-template-columns: 32px 1fr 54px;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"icon title views"
+		"icon subtitle views";
+	grid-column-gap: 10px;
+
+	> .icon { grid-area: icon;}
+
+	> .title
+	{
+		grid-area: title;
+
+		font: 14px "Oswald";
+	}
+
+	> .subtitle
+	{
+		grid-area: subtitle;
+
+		font: 11px "Oswald";
+		color: $color-gray;
+	}
+
+	> .views
+	{
+		grid-area: views;
+
+		&::after
+		{
+			width: 16px;
+			height: 16px;
+
+			display: inline-block;
+
+			//background: url(./images/view-icon.png);
+
+			content: '';
+		}
+	}
+}

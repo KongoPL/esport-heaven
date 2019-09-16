@@ -1,0 +1,12 @@
+@import 'scss/_autoload';
+
+.btn
+{
+	padding: 5px 10px;
+
+	border-radius: 3px;
+
+	background: $color-primary;
+
+	font: $font-button;
+}

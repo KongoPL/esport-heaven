@@ -1,0 +1,53 @@
+@import 'scss/_autoload';
+
+#root
+{
+	display: grid;
+	justify-content: center;
+
+	grid-template-columns: 1000px 300px;
+	grid-template-rows: auto;
+	grid-template-areas: 
+		"header header"
+		"left-column right-column"
+		"footer footer";
+	grid-column-gap: 100px;
+}
+
+
+#root > header.page
+{
+	@import './_page-header';
+
+	grid-area: header;
+}
+
+#root > .right-column
+{
+	grid-area: right-column;
+
+	> .box
+	{
+		padding: 12px 0px 15px;
+
+		> header
+		{
+			padding: 0px 10px;
+			margin-bottom: 5px;
+
+			font: $font-h4;
+		}
+	}
+
+	> .upcoming-games
+	{
+		@import './_upcoming-game';
+
+		margin-bottom: 50px;
+	}
+
+	> .live-transmissions
+	{
+		@import './_live-transmission';
+	}
+}

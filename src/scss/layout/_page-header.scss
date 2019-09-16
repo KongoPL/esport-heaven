@@ -1,0 +1,54 @@
+@import 'scss/_autoload';
+
+&
+{
+	display: grid;
+
+	grid-template-columns: 350px 1000px;
+	grid-template-rows: 150px;
+	grid-template-areas: "logo menu";
+	grid-column-gap: 50px;
+
+	.logo { grid-area: logo; }
+	.menu { grid-area: menu; }
+
+	.menu
+	{
+		.main-links,
+		.sub-links
+		{
+			@include reset-list-style;
+			@include horizontal-list;
+
+			> li:not(:first-child)
+			{
+				margin-left: 30px;
+			}
+		}
+
+		.main-links
+		{
+			margin-bottom: 30px;
+
+			font: $font-h3;
+		}
+
+		.sub-links
+		{
+			font: $font-h4;
+
+			img
+			{
+				position: relative;
+				top: 6px;
+
+				width: 32px;
+				height: 32px;
+
+				margin-right: 10px;
+
+				object-fit: contain;
+			}
+		}
+	}
+}

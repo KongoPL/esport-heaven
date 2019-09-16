@@ -1,0 +1,24 @@
+https://medium.com/@dannyhuang_75970/sass-project-structure-for-big-projects-8c4a740846ee
+
+Bigger Projects
+
+For a bigger project, multiple page app, I use 7–1 pattern, it is similar to the small project file structure but with more folders. Here’s what 7–1 the pattern looks like.
+
+    base/
+    components/
+    layout/
+    pages/
+    themes/
+    abstracts/
+    vendors/
+    main.scss
+
+The base, components, and layout do the same job as the file structure above. However, instead of a single file, we now manage them in a folder.
+
+Base: animations, base, typography, and utilies.
+Components: have a single scss file for each individual component
+Layout: Header, footer, grid, navigation
+Pages: Have a single scss for each specific page
+Themes: deals with various themes (optional, I haven’t use it yet)
+Abstracts: handles function, mixins, and variables
+Vendor: handles 3rd party css

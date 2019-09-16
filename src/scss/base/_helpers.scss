@@ -1,0 +1,15 @@
+.float-right { float: right; }
+.float-left { float: left; }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-truncate
+{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.no-margin { margin: 0px; }
+.margin-top-10 { margin-top: 10px;}

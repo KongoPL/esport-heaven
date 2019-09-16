@@ -1,0 +1,8 @@
+@import 'scss/_autoload';
+
+.box
+{
+	border-top: 2px solid $color-secondary;
+
+	background: $color-primary-darker;
+}

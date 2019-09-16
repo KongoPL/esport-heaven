@@ -1,0 +1,37 @@
+@import 'scss/_autoload';
+
+.upcoming-game
+{
+	padding: 4px 10px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&.active
+	{
+		background: rgba(255, 255,255,0.25);
+	}
+
+	.team
+	{
+		img
+		{
+			width: 32px;
+			height: 32px;
+
+			display: inline-block;
+			vertical-align: middle;
+
+			object-fit: contain;
+		}
+	}
+
+	.team:first-child img { margin-right: 10px; }
+	.team:last-child img { margin-left: 10px; }
+
+	.center
+	{
+		margin-top: -6px;
+	}
+}
