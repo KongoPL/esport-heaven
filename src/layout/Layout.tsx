@@ -1,6 +1,6 @@
 import React from 'react';
 
-import 'scss/layout/index.scss';
+import 'css/layout/index.css';
 
 export default class Layout extends React.Component
 {
