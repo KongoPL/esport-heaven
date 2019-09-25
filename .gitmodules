@@ -1,0 +1,4 @@
+[submodule "bin/sass-compiler"]
+	path = bin/sass-compiler
+	url = https://github.com/KongoPL/sass-compiler
+	branch = master

@@ -4,9 +4,38 @@
 {
 	padding: 5px 10px;
 
+	border: 0px none;
 	border-radius: 3px;
 
 	background: $color-primary;
 
 	font: $font-button;
+	color: $color-text-default;
+
+	&.large
+	{
+		padding: 5px 20px;
+
+		font: $font-button-large;
+	}
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"]
+{
+	padding: 4px 7px;
+
+	background: none;
+
+	border: 0px;
+	border-bottom: 2px solid $color-primary;
+
+	font: $font-default;
+	color: #7E7E7E;
+
+	&::placeholder 
+	{
+		font-style: italic;
+	}
 }

@@ -20,7 +20,7 @@ export default class Layout extends React.Component
 							<li><a href="#">Contact</a></li>
 							<li className="float-right"><a href="#">My Account</a></li>
 						</ul>
-						<ul className="sub-links text-right">
+						<ul className="sub-links text-right game-pick">
 							<li>
 								<a href="#">
 									<img src="images/game-icons/csgo.png" />
@@ -99,25 +99,35 @@ export default class Layout extends React.Component
 						<a href="#"><img src="images/social-icons/twitter.png" /></a>
 						<a href="#"><img src="images/social-icons/twitch.png" /></a>
 					</div>
+
+					<div id="google-ad-side">
+						<img src="/images/ad.png" style={{ width: '100%'}} />
+					</div>
 				</div>
 
 				<footer className="page">
-					<div className="box newsletter">
-						<div className="text">
-							<h2>Subscribe to our newsletter!</h2>
-							<span className="sub">Stay up to date with hottest news from esport world!</span>
+					<div className="container">
+						<div id="google-ad-footer">
+							<img src="/images/ad.png" style={{ width: '100%' }} />
 						</div>
-						<div className="form">
-							<form>
-								<input type="email" placeholder="Type your email address" />
-								<button>Subscribe</button>
-							</form>
+
+						<div className="box newsletter">
+							<div className="text">
+								<h2 className="header">Subscribe to our newsletter!</h2>
+								<span className="sub">Stay up to date with hottest news from esport world!</span>
+							</div>
+							<div className="form">
+								<form>
+									<input type="email" placeholder="Type your email address" />
+									<button className="btn">Subscribe</button>
+								</form>
+							</div>
 						</div>
 					</div>
 
 					<div className="page-links">
-						<div className="column-left-1">
-							<h4>Shortcuts</h4>
+						<div className="column-left-1 links-list">
+							<h4 className="header">Shortcuts</h4>
 							<ul>
 								<li><a href="#">Main page</a></li>
 								<li><a href="#">Upcoming games</a></li>
@@ -125,8 +135,8 @@ export default class Layout extends React.Component
 								<li><a href="#">Contact</a></li>
 							</ul>
 						</div>
-						<div className="column-left-2">
-							<h4>Games</h4>
+						<div className="column-left-2 links-list">
+							<h4 className="header">Games</h4>
 							<ul>
 								<li><a href="#">CS:GO</a></li>
 								<li><a href="#">League of Legends</a></li>
@@ -135,11 +145,11 @@ export default class Layout extends React.Component
 								<li><a href="#">PUBG</a></li>
 							</ul>
 						</div>
-						<div className="site-logo">
+						<div className="center site-logo">
 							<a href="#"><img src="images/logo.png" /></a>
 						</div>
-						<div className="column-left-1">
-							<h4>Community</h4>
+						<div className="column-right-1 links-list">
+							<h4 className="header">Community</h4>
 							<ul>
 								<li><a href="#">Facebook</a></li>
 								<li><a href="#">Twitter</a></li>
@@ -147,8 +157,8 @@ export default class Layout extends React.Component
 								<li><a href="#">Instagram</a></li>
 							</ul>
 						</div>
-						<div className="column-left-2">
-							<h4>Career</h4>
+						<div className="column-right-2 links-list">
+							<h4 className="header">Career</h4>
 							<ul>
 								<li><a href="#">Who we are?</a></li>
 								<li><a href="#">Our team</a></li>
