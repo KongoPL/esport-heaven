@@ -1,0 +1,34 @@
+@import 'scss/_autoload';
+
+.newsletter
+{
+	padding: 15px 5% 25px;
+	margin-top: 50px;
+
+	display: grid;
+	align-items: center;
+		
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: 'text form';
+
+	.text
+	{
+		grid-area: text;
+
+		.header { margin: 0px 0px 15px; }
+		.sub { color: $color-gray; }
+	}
+
+	.form
+	{
+		grid-area: form;
+
+		text-align: center;
+
+		input
+		{
+			width: 60%;
+			margin-right: 5%;
+		}
+	}
+}

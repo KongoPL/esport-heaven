@@ -12,6 +12,8 @@
 	font: $font-button;
 	color: $color-text-default;
 
+	cursor: pointer;
+
 	&.large
 	{
 		padding: 5px 20px;
@@ -33,6 +35,14 @@ input[type="email"]
 
 	font: $font-default;
 	color: #7E7E7E;
+
+	transition: border-color 0.5s;
+	will-change: border-color;
+
+	&:focus
+	{
+		border-bottom-color: $color-secondary;
+	}
 
 	&::placeholder 
 	{

@@ -1,0 +1,76 @@
+@import 'scss/_autoload';
+
+#root
+{
+	width: 1400px;
+
+	margin: 0px auto; // justify-content: center; doesn't work as it should (centers, but also cuts left side of content if size is > than window size)
+
+	display: grid;
+
+	grid-template-columns: 1000px 300px;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"header header"
+		"left-column right-column"
+		"footer footer";
+	grid-column-gap: 100px;
+}
+
+
+#root > header.page
+{
+	grid-area: header;
+}
+
+#root > .right-column
+{
+	grid-area: right-column;
+
+	> .box
+	{
+		padding: 12px 0px 15px;
+
+		> header
+		{
+			padding: 0px 10px;
+			margin-bottom: 5px;
+
+			font: $font-h4;
+		}
+	}
+
+	> .upcoming-games,
+	> .live-transmissions,
+	> .social-media
+	{
+		margin-bottom: 50px;
+	}
+}
+
+#root > footer.page
+{
+	grid-area: footer;
+
+	margin-top: 50px;
+
+	> .container
+	{
+		width: 1000px;
+
+		margin: 0px auto;
+	}
+
+	#google-ad-footer,
+	#google-ad-footer img
+	{
+		height: 250px;
+	}
+
+
+	.newsletter,
+	.footer-links
+	{
+		margin-top: 50px;
+	}
+}

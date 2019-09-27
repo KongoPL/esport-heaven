@@ -1,0 +1,43 @@
+@import 'scss/_autoload';
+
+.footer-links
+{
+	margin-top: 50px;
+	padding: 50px 25px;
+
+	border-width: 2px 0px;
+	border-style: solid;
+	border-color: $color-primary;
+
+	display: grid;
+	grid-template-columns: 200px 200px 1fr 50px 200px 150px;
+	grid-template-areas: 'left-1 left-2 center space right-1 right-2';
+
+	> .column-left-1 { grid-area: left-1; }
+	> .column-left-2 { grid-area: left-2; }
+	> .center { grid-area: center; }
+	> .column-right-1 { grid-area: right-1; }
+	> .column-right-2 { grid-area: right-2; }
+
+	.site-logo
+	{
+		align-self: center;
+
+		text-align: center;
+	}
+
+	.links-list
+	{
+		.header
+		{
+			margin: 0px 0px 15px;
+		}
+
+		ul
+		{
+			@include reset-list-style;
+
+			line-height: 1.5em;
+		}
+	}
+}
