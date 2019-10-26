@@ -1,44 +1,28 @@
 import React from 'react';
 
+import { INews } from 'DataTypes';
 import 'css/pages/index.css';
+import Api from 'Api';
 
-export default class Index extends React.Component
+
+export default class Index extends React.Component<{}, { newsList: INews[] }>
 {
+	constructor( props: any )
+	{
+		super( props );
+
+		this.state = {
+			newsList: []
+		}
+
+		Api.getNewsList().then( ( newsList ) => this.setState( { newsList } ) );
+	}
+
 	render()
 	{
-		const newsList: INews[] = [
-			{
-				isMain: true,
-
-				imageUrl: '/images/news-images/astralis.png',
-				title: 'ASTRALIS WINS ELEAGUE PREMIER 2018!',
-				content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo et ipsum ornare lobortis at et orci. Mauris id ligula laoreet, ornare lacus tempor, mollis turpis. In et orci eget quam viverra feugiat. Sed non mi posuere, hendrerit orci nec, tempor turpis. Donec et faucibus eros, quis dictum lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dui justo, consectetur sit amet ipsum non, mollis euismod quam. Maecenas accumsan malesuada porta. Duis vitae orci auctor, pharetra lacus eu, laoreet ipsum. Phasellus eu nisl est. Suspendisse velit elit, finibus quis ex sit amet, vehicula convallis ligula. Ut ac nisl et mi scelerisque tincidunt.'
-			}, {
-				isMain: false,
-
-				imageUrl: '/images/news-images/fnatic.png',
-				title: 'FNatic wins League of Legends cup 2019!'
-			}, {
-				isMain: false,
-
-				imageUrl: '/images/news-images/fnatic.png',
-				title: 'FNatic wins League of Legends cup 2019!'
-			}, {
-				isMain: false,
-
-				imageUrl: '/images/news-images/fnatic.png',
-				title: 'FNatic wins League of Legends cup 2019!'
-			}, {
-				isMain: false,
-
-				imageUrl: '/images/news-images/fnatic.png',
-				title: 'FNatic wins League of Legends cup 2019!'
-			},
-		];
-
 		return (
 			<>
-				<NewsList className="main-wide" data={newsList} />
+				<NewsList className="main-wide" data={this.state.newsList} />
 
 				<div className="google-ad-news">
 					<img src="/images/ad.png" style={{ width: '100%' }} />
@@ -48,7 +32,7 @@ export default class Index extends React.Component
 					<img src="/images/contest.png" style={{ width: '100%' }} />
 				</div>
 
-				<NewsList className="main-side" data={newsList} />
+				<NewsList className="main-side" data={this.state.newsList} />
 
 				<div className="text-center">
 					<a className="btn large">Load more</a>
@@ -109,13 +93,4 @@ function DefaultNews( props: { data: INews } )
 			</div>
 		</div>
 	);
-}
-
-
-interface INews
-{
-	isMain: boolean,
-	imageUrl: string,
-	title: string,
-	content?: string,
 }
