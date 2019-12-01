@@ -50,7 +50,7 @@ export default class FooterLinks extends React.Component<{ columns: FooterLinkCo
 
 export class FooterLinkColumn
 {
-	constructor( public location: EColumnLocation, public header: string, public links: JSX.Element[] ) { }
+	constructor( public location: EColumnLocation, public header: string, public links: JSX.Element[] = [] ) { }
 }
 
 export enum EColumnLocation

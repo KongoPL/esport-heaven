@@ -1,20 +1,28 @@
 import React from 'react';
 
 import 'scss/layout/UpcomingGames.scss';
+import { IUpcomingGame } from 'DataTypes';
+import Api from 'Api';
 
-export default class UpcomingGames extends React.Component
+export default class UpcomingGames extends React.Component<{}, { games: IUpcomingGame[] }>
 {
+	constructor( props: any )
+	{
+		super( props );
+
+		this.state = {
+			games: []
+		};
+
+		Api.getUpcomingGames().then( ( games ) => this.setState( { games } ) );
+	}
+
 	render()
 	{
-		const fnatic = new Team( 'Fnatic', '/images/team-icons/fnatic.png' ),
-			astralis = new Team( 'Astralis', '/images/team-icons/astralis.png' )
-
 		return (
 			<div className="box upcoming-games">
 				<header>Upcoming games</header>
-				{Array( 6 ).fill(
-					<UpcomingGame teamLeft={fnatic} teamRight={astralis} />
-				)}
+				{this.state.games.map( ( v ) => <UpcomingGame game={v} />)}
 				<div className="margin-top-10 text-center">
 					<a href="#" className="btn">Load more</a>
 				</div>
@@ -24,25 +32,19 @@ export default class UpcomingGames extends React.Component
 }
 
 
-function UpcomingGame( props: {teamLeft: Team, teamRight: Team} )
+function UpcomingGame( props: { game: IUpcomingGame } )
 {
 	return (
 		<div className="upcoming-game">
 			<div className="team">
-				<img src={props.teamLeft.iconUrl} className="icon" />
-				{props.teamLeft.name}
+				<img src={props.game.teamA.iconUrl} className="icon" />
+				{props.game.teamA.name}
 			</div>
 			<div className="center text-center">vs.</div>
 			<div className="team">
-				{props.teamRight.name}
-				<img src={props.teamRight.iconUrl} className="icon" />
+				{props.game.teamB.name}
+				<img src={props.game.teamB.iconUrl} className="icon" />
 			</div>
 		</div>
 	);
-}
-
-
-class Team
-{
-	constructor( public name: string, public iconUrl: string ) { }
 }

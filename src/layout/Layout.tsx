@@ -16,8 +16,10 @@ import FooterCopyrightText from 'layout/FooterCopyrightText';
 import NewsletterForm from 'layout/NewsletterForm';
 
 import 'css/layout/Layout.css';
+import Api from 'Api';
+import { IGame } from 'DataTypes';
 
-export default class Layout extends React.Component
+export default class Layout extends React.Component<{}, { games: IGame[] }>
 {
 	private mainLinks = [
 		<a href="#">Main page</a>,
@@ -27,15 +29,6 @@ export default class Layout extends React.Component
 		<a href="#">My Account</a>
 	];
 
-	private subLinks = [
-		<GameLink iconUrl="/images/game-icons/csgo.png" name="CS:GO" />,
-		<GameLink iconUrl="/images/game-icons/lol.png" name="LoL" />,
-		<GameLink iconUrl="/images/game-icons/dota2.png" name="Dota 2" />,
-		<GameLink iconUrl="/images/game-icons/fortnite.png" name="Fortnite" />,
-		<GameLink iconUrl="/images/game-icons/pubg.png" name="PUBG" />
-	];
-
-
 	private footerLinks = [
 		new FooterLinkColumn( EColumnLocation.LOCATION_LEFT_1, 'Shortcuts', [
 			<a href="#">Main page</a>,
@@ -44,13 +37,7 @@ export default class Layout extends React.Component
 			<a href="#">Contact</a>
 		] ),
 
-		new FooterLinkColumn( EColumnLocation.LOCATION_LEFT_2, 'Games', [
-			<a href="#">CS:GO</a>,
-			<a href="#">League of Legends</a>,
-			<a href="#">Dota 2</a>,
-			<a href="#">Fortnite</a>,
-			<a href="#">PUBG</a>
-		] ),
+		new FooterLinkColumn( EColumnLocation.LOCATION_LEFT_2, 'Games' ),
 
 		new FooterLinkColumn( EColumnLocation.LOCATION_RIGHT_1, 'Community', [
 			<a href="#">Facebook</a>,
@@ -66,14 +53,29 @@ export default class Layout extends React.Component
 		] ),
 	];
 
+	constructor( params: any )
+	{
+		super( params );
+
+		this.state = {
+			games: []
+		};
+
+		Api.getGames().then( ( games: IGame[] ) => this.setState( { games } ) );
+	}
+
 
 	render()
 	{
+		const subLinks = this.state.games.map( ( game: IGame ) => <GameLink iconUrl={game.icon} name={game.nameShort} /> );
+
+		this.footerLinks[1].links = this.state.games.map( ( game: IGame ) => <a href="#">{game.name}</a> );
+
 		return (
 			<>
 				<PageHeader>
 					<Logo />
-					<Menu mainLinks={this.mainLinks} mainLinksLastFloatRight subLinks={this.subLinks} />
+					<Menu mainLinks={this.mainLinks} mainLinksLastFloatRight subLinks={subLinks} />
 				</PageHeader>
 				<div className="left-column">
 					{this.props.children}

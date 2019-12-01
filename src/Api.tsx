@@ -1,4 +1,4 @@
-import { INews } from "DataTypes";
+import { INews, IGame, ITransmission, IUpcomingGame } from "DataTypes";
 
 export default class Api
 {
@@ -6,6 +6,25 @@ export default class Api
 	{
 		return new Promise( ( resolve ) => resolve( Api.data.news ) );
 	}
+
+
+	static getGames(): Promise<IGame[]>
+	{
+		return new Promise( ( resolve ) => resolve( Api.data.games ) );
+	}
+
+
+	static getTransmissions(): Promise<ITransmission[]>
+	{
+		return new Promise( ( resolve ) => resolve( Api.data.liveTransmissions ) );
+	}
+
+
+	static getUpcomingGames(): Promise<IUpcomingGame[]>
+	{
+		return new Promise( ( resolve ) => resolve( Api.data.upcomingGames ) );
+	}
+
 
 	protected static data = {
 		news: [
@@ -36,6 +55,48 @@ export default class Api
 				imageUrl: '/images/news-images/fnatic.png',
 				title: 'FNatic wins League of Legends cup 2019!'
 			},
-		]
+		],
+
+		games: [
+			{
+				name: 'CS:GO',
+				nameShort: 'CS:GO',
+				icon: '/images/game-icons/csgo.png'
+			}, {
+				name: 'League of Legends',
+				nameShort: 'LoL',
+				icon: '/images/game-icons/lol.png'
+			}, {
+				name: 'Dota 2',
+				nameShort: 'Dota 2',
+				icon: '/images/game-icons/dota2.png'
+			}, {
+				name: 'Fortnite',
+				nameShort: 'Fortnite',
+				icon: '/images/game-icons/fortnite.png'
+			}, {
+				name: 'PUBG',
+				nameShort: 'PUBG',
+				icon: '/images/game-icons/pubg.png'
+			}
+		],
+
+		liveTransmissions: Array( 5 ).fill( {
+			title: 'TRIO CASH CUP, TOP 54 SOLO and some more text that I don\'t remember yet',
+			author: 'ryux',
+			iconUrl: '/images/transmission-icon.png',
+			views: '445K'
+		} ),
+
+		upcomingGames: Array( 6 ).fill( {
+			teamA: {
+				name: 'Fnatic',
+				iconUrl: '/images/team-icons/fnatic.png'
+			},
+			teamB: {
+				name: 'Astralis',
+				iconUrl: '/images/team-icons/astralis.png'
+			}
+		})
 	};
 }
