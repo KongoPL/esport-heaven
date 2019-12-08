@@ -6,9 +6,9 @@ export default class SocialMediaLinks extends React.Component
 	{
 		return (
 			<div className="social-media">
-				<a href="#"><img src="images/social-icons/facebook.png" /></a>
-				<a href="#"><img src="images/social-icons/twitter.png" /></a>
-				<a href="#"><img src="images/social-icons/twitch.png" /></a>
+				<a href="#"><img src="/images/social-icons/facebook.png" /></a>
+				<a href="#"><img src="/images/social-icons/twitter.png" /></a>
+				<a href="#"><img src="/images/social-icons/twitch.png" /></a>
 			</div>
 		);
 	}

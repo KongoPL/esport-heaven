@@ -2,11 +2,6 @@ import React from 'react';
 
 export default class Menu extends React.Component<{ mainLinks: any[], subLinks: any[], mainLinksLastFloatRight?: boolean }>
 {
-	constructor( props: any )
-	{
-		super( props );
-	}
-
 	render()
 	{
 		return (

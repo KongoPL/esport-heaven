@@ -81,9 +81,9 @@ export default class Layout extends React.Component<{}, { games: IGame[] }>
 					{this.props.children}
 				</div>
 				<div className="right-column">
-					<UpcomingGames />,
-					<LiveTransmissions />,
-					<SocialMediaLinks />,
+					<UpcomingGames />
+					<LiveTransmissions />
+					<SocialMediaLinks />
 					<GoogleAd id="google-ad-side" />
 				</div>
 				<PageFooter>

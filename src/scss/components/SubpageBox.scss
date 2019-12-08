@@ -1,0 +1,11 @@
+.box.subpage-box
+{
+	padding: 15px;
+
+	.full-width
+	{
+		width: calc(100% + 30px);
+
+		margin-left: -15px;
+	}
+}

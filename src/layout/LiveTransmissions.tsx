@@ -20,7 +20,7 @@ export default class UpcomingGames extends React.Component<{}, { transmissions: 
 
 	render()
 	{
-		const transmissions = this.state.transmissions.map( ( v ) => <LiveTransmission data={v} /> );
+		const transmissions = this.state.transmissions.map( ( v, i ) => <LiveTransmission data={v} key={i} /> );
 
 		return (
 			<div className="box live-transmissions">

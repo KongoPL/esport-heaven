@@ -22,7 +22,7 @@ export default class UpcomingGames extends React.Component<{}, { games: IUpcomin
 		return (
 			<div className="box upcoming-games">
 				<header>Upcoming games</header>
-				{this.state.games.map( ( v ) => <UpcomingGame game={v} />)}
+				{this.state.games.map( ( v, i ) => <UpcomingGame game={v} key={i} />)}
 				<div className="margin-top-10 text-center">
 					<a href="#" className="btn">Load more</a>
 				</div>
