@@ -1,1 +1,0 @@
-node sass-compiler\sass-compiler.js "D:\repos\esport-heaven\src\scss" "D:\repos\esport-heaven\src\css" --includePath="D:\repos\esport-heaven\src"
