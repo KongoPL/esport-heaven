@@ -15,7 +15,7 @@ import FooterLinks, { FooterLinkColumn, EColumnLocation } from 'layout/FooterLin
 import FooterCopyrightText from 'layout/FooterCopyrightText';
 import NewsletterForm from 'layout/NewsletterForm';
 
-import 'css/layout/Layout.css';
+import 'scss/layout/Layout.scss';
 import Api from 'Api';
 import { IGame } from 'DataTypes';
 

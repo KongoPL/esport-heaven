@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { INews } from 'DataTypes';
-import 'css/pages/index.css';
+import 'scss/pages/index.scss';
 import Api from 'Api';
 import NewsList from 'components/NewsList';
 
