@@ -22,7 +22,7 @@ import { IGame } from 'DataTypes';
 export default class Layout extends React.Component<{}, { games: IGame[] }>
 {
 	private mainLinks = [
-		<a href="#">Main page</a>,
+		<a href="/">Main page</a>,
 		<a href="#">Upcoming games</a>,
 		<a href="#">Live transmissions</a>,
 		<a href="#">Contact</a>,
@@ -31,7 +31,7 @@ export default class Layout extends React.Component<{}, { games: IGame[] }>
 
 	private footerLinks = [
 		new FooterLinkColumn( EColumnLocation.LOCATION_LEFT_1, 'Shortcuts', [
-			<a href="#">Main page</a>,
+			<a href="/">Main page</a>,
 			<a href="#">Upcoming games</a>,
 			<a href="#">Live transmissions</a>,
 			<a href="#">Contact</a>
@@ -40,10 +40,10 @@ export default class Layout extends React.Component<{}, { games: IGame[] }>
 		new FooterLinkColumn( EColumnLocation.LOCATION_LEFT_2, 'Games' ),
 
 		new FooterLinkColumn( EColumnLocation.LOCATION_RIGHT_1, 'Community', [
-			<a href="#">Facebook</a>,
-			<a href="#">Twitter</a>,
-			<a href="#">Twitch</a>,
-			<a href="#">Instagram</a>
+			<a href="https://www.facebook.com/kuba.poliszuk">Facebook</a>,
+			<a href="https://twitter.com/">Twitter</a>,
+			<a href="https://twitch.tv/">Twitch</a>,
+			<a href="https://www.instagram.com/">Instagram</a>
 		] ),
 
 		new FooterLinkColumn( EColumnLocation.LOCATION_RIGHT_2, 'Career', [

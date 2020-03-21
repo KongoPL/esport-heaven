@@ -57,6 +57,6 @@ export enum EColumnLocation
 {
 	LOCATION_LEFT_1 = 'left_1',
 	LOCATION_LEFT_2 = 'left_2',
-	LOCATION_RIGHT_1 = 'left_1',
-	LOCATION_RIGHT_2 = 'left_2',
+	LOCATION_RIGHT_1 = 'right_1',
+	LOCATION_RIGHT_2 = 'right_2',
 }

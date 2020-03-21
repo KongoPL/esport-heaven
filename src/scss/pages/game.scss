@@ -1,0 +1,96 @@
+@import 'scss/_autoload';
+
+section.game-overview
+{
+	text-align: center;
+}
+
+div.game-overview
+{
+	display: inline-grid;
+	grid-template-areas: 'teams-score' 'maps';
+
+	.teams-score
+	{
+		display: inline-grid;
+		grid-area: teams-score;
+		grid-template-areas: 'team-a score team-b';
+		grid-column-gap: 60px;
+
+		> *
+		{
+			align-self: center;
+		}
+
+		.team-a
+		{
+			grid-area: team-a;
+		}
+
+		.team-b
+		{
+			grid-area: team-b;
+		}
+
+		.score
+		{
+			grid-area: score;
+			font: $font-h1;
+		}
+	}
+
+	.maps
+	{
+		grid-area: maps;
+
+		.map
+		{
+			text-align: center;
+			font: $font-h4;
+
+			&.left
+			{
+				text-align: left;
+			}
+
+			&.right
+			{
+				text-align: right;
+			}
+
+			.text
+			{
+				width: 128px;
+
+				display: inline-block;
+
+				text-align: center;
+			}
+		}
+	}
+}
+
+.team-description
+{
+	display: grid;
+	grid-template-areas: 'image' 'name';
+	grid-row-gap: 25px;
+
+	.image
+	{
+		grid-area: image;
+
+		width: 128px;
+		height: 128px;
+
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+	}
+
+	.name
+	{
+		font: $font-h3;
+		text-align: center;
+	}
+}
