@@ -3,6 +3,7 @@ import React from 'react';
 import 'scss/layout/LiveTransmissions.scss';
 import Api from 'Api';
 import { ITransmission } from 'DataTypes';
+import {Link} from "react-router-dom";
 
 export default class UpcomingGames extends React.Component<{}, { transmissions: ITransmission[] }>
 {
@@ -40,7 +41,7 @@ function LiveTransmission( props: { data: ITransmission } )
 	return (
 		<div className="live-transmission">
 			<div className="icon"><img src={props.data.iconUrl} /></div>
-			<div className="title text-truncate"><a href="#">{props.data.title}</a></div>
+			<div className="title text-truncate"><Link to={`/transmission/${props.data.id}`}>{props.data.title}</Link></div>
 			<div className="subtitle text-truncate">{props.data.author}</div>
 			<div className="views">{props.data.views}</div>
 		</div>

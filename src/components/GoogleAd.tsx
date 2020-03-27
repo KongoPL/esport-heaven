@@ -6,7 +6,7 @@ export default class GoogleAd extends React.Component<{id?:string}>
 	{
 		return (
 			<div id={this.props.id}>
-				<img src="/images/ad.png" style={{ width: '100%' }} />
+				<img src="/images/ad.png" style={{ width: '100%' }} alt="google-ad" />
 			</div>
 		);
 	}

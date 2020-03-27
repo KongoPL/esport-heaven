@@ -26,11 +26,11 @@ export default class Index extends React.Component<{}, { newsList: INews[] }>
 				<NewsList className="main-wide" data={this.state.newsList} />
 
 				<div className="google-ad-news">
-					<img src="/images/ad.png" style={{ width: '100%' }} />
+					<img src="/images/ad.png" style={{ width: '100%' }} alt="" />
 				</div>
 
 				<div className="contest">
-					<img src="/images/contest.png" style={{ width: '100%' }} />
+					<img src="/images/contest.png" style={{ width: '100%' }} alt="" />
 				</div>
 
 				<NewsList className="main-side" data={this.state.newsList} />

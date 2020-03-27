@@ -31,27 +31,32 @@ export default class Api
 			{
 				isMain: true,
 
+				id: 1,
 				imageUrl: '/images/news-images/astralis.png',
 				title: 'ASTRALIS WINS ELEAGUE PREMIER 2018!',
 				content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo et ipsum ornare lobortis at et orci. Mauris id ligula laoreet, ornare lacus tempor, mollis turpis. In et orci eget quam viverra feugiat. Sed non mi posuere, hendrerit orci nec, tempor turpis. Donec et faucibus eros, quis dictum lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dui justo, consectetur sit amet ipsum non, mollis euismod quam. Maecenas accumsan malesuada porta. Duis vitae orci auctor, pharetra lacus eu, laoreet ipsum. Phasellus eu nisl est. Suspendisse velit elit, finibus quis ex sit amet, vehicula convallis ligula. Ut ac nisl et mi scelerisque tincidunt.'
 			}, {
 				isMain: false,
 
+				id: 2,
 				imageUrl: '/images/news-images/fnatic.png',
 				title: 'FNatic wins League of Legends cup 2019!'
 			}, {
 				isMain: false,
 
+				id: 3,
 				imageUrl: '/images/news-images/fnatic.png',
 				title: 'FNatic wins League of Legends cup 2019!'
 			}, {
 				isMain: false,
 
+				id: 4,
 				imageUrl: '/images/news-images/fnatic.png',
 				title: 'FNatic wins League of Legends cup 2019!'
 			}, {
 				isMain: false,
 
+				id: 5,
 				imageUrl: '/images/news-images/fnatic.png',
 				title: 'FNatic wins League of Legends cup 2019!'
 			},
@@ -82,6 +87,7 @@ export default class Api
 		],
 
 		liveTransmissions: Array( 5 ).fill( {
+			id: 1,
 			title: 'TRIO CASH CUP, TOP 54 SOLO and some more text that I don\'t remember yet',
 			author: 'ryux',
 			iconUrl: '/images/transmission-icon.png',
@@ -89,6 +95,7 @@ export default class Api
 		} ),
 
 		upcomingGames: Array( 6 ).fill( {
+			id: 1,
 			teamA: {
 				name: 'Fnatic',
 				iconUrl: '/images/team-icons/fnatic.png'

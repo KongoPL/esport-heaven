@@ -20,3 +20,43 @@
 {
 	width: 100%;
 }
+
+#comments .comment
+{
+	padding: 10px;
+
+	display: grid;
+	grid-template-areas: "avatar author"
+						 "avatar content";
+	grid-column-gap: 15px;
+
+	background: $color-primary;
+
+	&:not(:last-child)
+	{
+		margin-bottom: 20px;
+	}
+
+	.avatar
+	{
+		grid-area: avatar;
+	}
+
+	.author
+	{
+		margin-bottom: 10px;
+
+		grid-area: author;
+
+		header
+		{
+			font: $font-h4;
+			line-height: 1;
+		}
+	}
+
+	.content
+	{
+		grid-area: content;
+	}
+}

@@ -45,7 +45,7 @@ function TeamDescription(props: {name: string, image: string, className?: string
 {
 	return <div className={`team-description ${props.className}`}>
 		<div className="image">
-			<img src={props.image} />
+			<img src={props.image} alt="team-logo" />
 		</div>
 		<div className="name">
 			{props.name}

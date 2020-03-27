@@ -3,6 +3,7 @@ import React from 'react';
 import { INews } from "DataTypes";
 
 import 'scss/components/NewsList.scss';
+import {Link} from "react-router-dom";
 
 export default class NewsList extends React.Component<{ className?: string, data: INews[] }>
 {
@@ -31,15 +32,17 @@ function MainNews( props: { data: INews } )
 {
 	return (
 		<div className="news main">
-			<div className="image">
-				<img src={props.data.imageUrl} />
-			</div>
-			<div className="content">
-				<header>{props.data.title}</header>
-				<section className="text">
-					{props.data.content}
-				</section>
-			</div>
+			<Link to={`/news/${props.data.id}`}>
+				<div className="image">
+					<img src={props.data.imageUrl} alt="" />
+				</div>
+				<div className="content">
+					<header>{props.data.title}</header>
+					<section className="text">
+						{props.data.content}
+					</section>
+				</div>
+			</Link>
 		</div>
 	);
 }
@@ -49,12 +52,14 @@ function DefaultNews( props: { data: INews } )
 {
 	return (
 		<div className="news">
-			<div className="image">
-				<img src={props.data.imageUrl} />
-			</div>
-			<div className="content">
-				<header>{props.data.title}</header>
-			</div>
+			<Link to={`/news/${props.data.id}`}>
+				<div className="image">
+					<img src={props.data.imageUrl} alt="" />
+				</div>
+				<div className="content">
+					<header>{props.data.title}</header>
+				</div>
+			</Link>
 		</div>
 	);
 }

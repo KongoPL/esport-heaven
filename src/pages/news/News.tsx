@@ -23,6 +23,13 @@ export default class News extends React.Component<{}, { newsList: INews[] }>
 
 	render()
 	{
+		const comment: IComment = {
+			author: 'Looney Tunes',
+			avatarUrl: '/images/user_avatar.png',
+			createdAt: 'today at 14:19',
+			content: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi lorem, consequat at luctus in, tincidunt vel mi. Nam sit amet faucibus urna. Ut non urna eleifend, suscipit urna ut, lacinia libero. Etiam a dignissim lacus. Morbi malesuada orci at ipsum gravida, ut bibendum est dignissim. Suspendisse at dignissim est. Aenean eu tortor at justo placerat blandit. Pellentesque a tincidunt diam. Phasellus ullamcorper, ex vitae laoreet semper, ligula ligula blandit urna, sit amet ornare mi justo sit amet massa. Cras tincidunt sollicitudin tellus eget blandit.'
+		};
+
 		return <>
 			<SubpageBox>
 				<header className="news-title">
@@ -31,7 +38,7 @@ export default class News extends React.Component<{}, { newsList: INews[] }>
 				</header>
 				<section className="news-content">
 					<div className="full-width news-image">
-						<img src="/images/news-images/astralis.png" />
+						<img src="/images/news-images/astralis.png" alt="news-1" />
 					</div>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales arcu et eros placerat aliquam. Phasellus volutpat orci ac ultrices ultricies. Suspendisse sed ex gravida, fringilla odio id, placerat neque. Donec lacinia posuere orci a vulputate. Morbi ultrices mollis turpis vitae ultricies. Proin eu ultricies turpis. Aliquam non neque purus. Etiam mauris tellus, semper in posuere quis, ornare nec nibh. Vivamus bibendum congue feugiat. Proin euismod laoreet finibus.
@@ -49,6 +56,38 @@ export default class News extends React.Component<{}, { newsList: INews[] }>
 			</SubpageBox>
 			<h3>You may be interested in with those news:</h3>
 			<NewsList className="no-main" data={this.state.newsList} />
+			<section id="comments">
+				<h3>Comments (12):</h3>
+				<SubpageBox>
+					<Comment {...comment} />
+					<Comment {...comment} />
+					<Comment {...comment} />
+				</SubpageBox>
+			</section>
 		</>;
 	}
+}
+
+interface IComment
+{
+	avatarUrl: string,
+	author: string,
+	createdAt: string,
+	content: string,
+}
+
+function Comment(props: IComment)
+{
+	return <div className="comment">
+		<div className="avatar">
+			<img src={props.avatarUrl} alt="avatar" />
+		</div>
+		<div className="author">
+			<header>{props.author}</header>
+			<sub>Written {props.createdAt}</sub>
+		</div>
+		<div className="content">
+			{props.content}
+		</div>
+	</div>;
 }

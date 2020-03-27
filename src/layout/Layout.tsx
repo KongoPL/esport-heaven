@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 import PageHeader from 'layout/PageHeader';
 import PageFooter from 'layout/PageFooter';
@@ -22,19 +23,19 @@ import { IGame } from 'DataTypes';
 export default class Layout extends React.Component<{}, { games: IGame[] }>
 {
 	private mainLinks = [
-		<a href="/">Main page</a>,
-		<a href="#">Upcoming games</a>,
-		<a href="#">Live transmissions</a>,
-		<a href="#">Contact</a>,
-		<a href="#">My Account</a>
+		<Link to="/">Main page</Link>,
+		<Link to="/">Upcoming games</Link>,
+		<Link to="/">Live transmissions</Link>,
+		<Link to="/">Contact</Link>,
+		<Link to="/">My Account</Link>
 	];
 
 	private footerLinks = [
 		new FooterLinkColumn( EColumnLocation.LOCATION_LEFT_1, 'Shortcuts', [
-			<a href="/">Main page</a>,
-			<a href="#">Upcoming games</a>,
-			<a href="#">Live transmissions</a>,
-			<a href="#">Contact</a>
+			<Link to="/">Main page</Link>,
+			<Link to="/">Upcoming games</Link>,
+			<Link to="/">Live transmissions</Link>,
+			<Link to="/">Contact</Link>,
 		] ),
 
 		new FooterLinkColumn( EColumnLocation.LOCATION_LEFT_2, 'Games' ),
@@ -47,9 +48,9 @@ export default class Layout extends React.Component<{}, { games: IGame[] }>
 		] ),
 
 		new FooterLinkColumn( EColumnLocation.LOCATION_RIGHT_2, 'Career', [
-			<a href="#">Who we are?</a>,
-			<a href="#">Our team</a>,
-			<a href="#">Work with us!</a>
+			<Link to="/">Who we are?</Link>,
+			<Link to="/">Our team</Link>,
+			<Link to="/">Work with us!</Link>
 		] ),
 	];
 
@@ -106,9 +107,9 @@ export default class Layout extends React.Component<{}, { games: IGame[] }>
 function GameLink( props: { iconUrl: string, name: string } )
 {
 	return (
-		<a href="#">
+		<Link to="/">
 			<img src={props.iconUrl} />
 			{props.name}
-		</a>
+		</Link>
 	);
 }

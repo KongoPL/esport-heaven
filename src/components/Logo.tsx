@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 export default class Logo extends React.Component<{ className?: string}>
 {
@@ -8,7 +9,7 @@ export default class Logo extends React.Component<{ className?: string}>
 
 		return (
 			<div className={className}>
-				<a href="#"><img src="/images/logo.png" /></a>
+				<Link to="/"><img src="/images/logo.png" /></Link>
 			</div>
 		);
 	}

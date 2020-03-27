@@ -1,5 +1,6 @@
 export interface INews
 {
+	id: number,
 	isMain: boolean,
 	imageUrl: string,
 	title: string,
@@ -16,6 +17,7 @@ export interface IGame
 
 export interface ITransmission
 {
+	id: number,
 	title: string,
 	author: string,
 	iconUrl: string,
@@ -24,6 +26,7 @@ export interface ITransmission
 
 export interface IUpcomingGame
 {
+	id: number,
 	teamA: ITeam,
 	teamB: ITeam
 }
