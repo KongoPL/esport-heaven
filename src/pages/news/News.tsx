@@ -1,5 +1,5 @@
 import React from 'react';
-import { INews } from 'DataTypes';
+import {IComment, INews} from 'DataTypes';
 import Api from 'Api';
 import NewsList from 'components/NewsList';
 import SubpageBox from 'components/SubpageBox';
@@ -23,13 +23,6 @@ export default class News extends React.Component<{}, { newsList: INews[] }>
 
 	render()
 	{
-		const comment: IComment = {
-			author: 'Looney Tunes',
-			avatarUrl: '/images/user_avatar.png',
-			createdAt: 'today at 14:19',
-			content: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi lorem, consequat at luctus in, tincidunt vel mi. Nam sit amet faucibus urna. Ut non urna eleifend, suscipit urna ut, lacinia libero. Etiam a dignissim lacus. Morbi malesuada orci at ipsum gravida, ut bibendum est dignissim. Suspendisse at dignissim est. Aenean eu tortor at justo placerat blandit. Pellentesque a tincidunt diam. Phasellus ullamcorper, ex vitae laoreet semper, ligula ligula blandit urna, sit amet ornare mi justo sit amet massa. Cras tincidunt sollicitudin tellus eget blandit.'
-		};
-
 		return <>
 			<SubpageBox>
 				<header className="news-title">
@@ -56,25 +49,17 @@ export default class News extends React.Component<{}, { newsList: INews[] }>
 			</SubpageBox>
 			<h3>You may be interested in with those news:</h3>
 			<NewsList className="no-main" data={this.state.newsList} />
-			<section id="comments">
-				<h3>Comments (12):</h3>
-				<SubpageBox>
-					<Comment {...comment} />
-					<Comment {...comment} />
-					<Comment {...comment} />
-				</SubpageBox>
-			</section>
+			{/*<section id="comments">*/}
+			{/*	<h3>Comments (12):</h3>*/}
+			{/*	<SubpageBox>*/}
+			{/*		<Comment {...comment} />*/}
+			{/*	</SubpageBox>*/}
+			{/*</section>*/}
 		</>;
 	}
 }
 
-interface IComment
-{
-	avatarUrl: string,
-	author: string,
-	createdAt: string,
-	content: string,
-}
+
 
 function Comment(props: IComment)
 {

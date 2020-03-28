@@ -36,3 +36,11 @@ export interface ITeam
 	name: string,
 	iconUrl: string
 }
+
+export interface IComment
+{
+	avatarUrl: string,
+	author: string,
+	createdAt: string,
+	content: string,
+}
