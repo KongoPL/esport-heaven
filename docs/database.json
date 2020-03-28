@@ -2,88 +2,88 @@
 	"games": [
 		{
 			"id": 1,
-			"name": 'CS:GO',
-			"nameShort": 'CS:GO',
-			"icon": '/images/game-icons/csgo.png'
+			"name": "CS:GO",
+			"nameShort": "CS:GO",
+			"icon": "/images/game-icons/csgo.png"
 		}, {
 			"id": 2,
-			"name": 'League of Legends',
-			"nameShort": 'LoL',
-			"icon": '/images/game-icons/lol.png'
+			"name": "League of Legends",
+			"nameShort": "LoL",
+			"icon": "/images/game-icons/lol.png"
 		}, {
 			"id": 3,
-			"name": 'Dota 2',
-			"nameShort": 'Dota 2',
-			"icon": '/images/game-icons/dota2.png'
+			"name": "Dota 2",
+			"nameShort": "Dota 2",
+			"icon": "/images/game-icons/dota2.png"
 		}, {
 			"id": 4,
-			"name": 'Fortnite',
-			"nameShort": 'Fortnite',
-			"icon": '/images/game-icons/fortnite.png'
+			"name": "Fortnite",
+			"nameShort": "Fortnite",
+			"icon": "/images/game-icons/fortnite.png"
 		}, {
 			"id": 5,
-			"name": 'PUBG',
-			"nameShort": 'PUBG',
-			"icon": '/images/game-icons/pubg.png'
+			"name": "PUBG",
+			"nameShort": "PUBG",
+			"icon": "/images/game-icons/pubg.png"
 		}
 	],
 	"news": [
 		{
 			"id": 1,
 			"gameId": null,
-			"imageUrl": '/images/news-images/astralis.png',
-			"title": 'ASTRALIS WINS ELEAGUE PREMIER 2018!',
-			"content": 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo et ipsum ornare lobortis at et orci. Mauris id ligula laoreet, ornare lacus tempor, mollis turpis. In et orci eget quam viverra feugiat. Sed non mi posuere, hendrerit orci nec, tempor turpis. Donec et faucibus eros, quis dictum lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dui justo, consectetur sit amet ipsum non, mollis euismod quam. Maecenas accumsan malesuada porta. Duis vitae orci auctor, pharetra lacus eu, laoreet ipsum. Phasellus eu nisl est. Suspendisse velit elit, finibus quis ex sit amet, vehicula convallis ligula. Ut ac nisl et mi scelerisque tincidunt.'
+			"imageUrl": "/images/news-images/astralis.png",
+			"title": "ASTRALIS WINS ELEAGUE PREMIER 2018!",
+			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo et ipsum ornare lobortis at et orci. Mauris id ligula laoreet, ornare lacus tempor, mollis turpis. In et orci eget quam viverra feugiat. Sed non mi posuere, hendrerit orci nec, tempor turpis. Donec et faucibus eros, quis dictum lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dui justo, consectetur sit amet ipsum non, mollis euismod quam. Maecenas accumsan malesuada porta. Duis vitae orci auctor, pharetra lacus eu, laoreet ipsum. Phasellus eu nisl est. Suspendisse velit elit, finibus quis ex sit amet, vehicula convallis ligula. Ut ac nisl et mi scelerisque tincidunt."
 		}, {
 			"id": 2,
 			"gameId": 1,
-			"imageUrl": '/images/news-images/fnatic.png',
-			"title": 'FNatic wins League of Legends cup 2019!'
+			"imageUrl": "/images/news-images/fnatic.png",
+			"title": "FNatic wins League of Legends cup 2019!"
 		}, {
 			"id": 3,
 			"gameId": 1,
-			"imageUrl": '/images/news-images/fnatic.png',
-			"title": 'FNatic wins League of Legends cup 2019!'
+			"imageUrl": "/images/news-images/fnatic.png",
+			"title": "FNatic wins League of Legends cup 2019!"
 		}, {
 			"id": 4,
 			"gameId": 1,
-			"imageUrl": '/images/news-images/fnatic.png',
-			"title": 'FNatic wins League of Legends cup 2019!'
+			"imageUrl": "/images/news-images/fnatic.png",
+			"title": "FNatic wins League of Legends cup 2019!"
 		}, {
 			"id": 5,
 			"gameId": 1,
-			"imageUrl": '/images/news-images/fnatic.png',
-			"title": 'FNatic wins League of Legends cup 2019!'
-		},
+			"imageUrl": "/images/news-images/fnatic.png",
+			"title": "FNatic wins League of Legends cup 2019!"
+		}
 	],
 	"comments": [
 		{
 			"newsId": 1,
-			"author": 'Looney Tunes',
-			"avatarUrl": '/images/user_avatar.png',
+			"author": "Looney Tunes",
+			"avatarUrl": "/images/user_avatar.png",
 			"createdAtTimestamp": 1585401540,
-			"createdAt": 'today at 14:19',
-			"content": ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi lorem, consequat at luctus in, tincidunt vel mi. Nam sit amet faucibus urna. Ut non urna eleifend, suscipit urna ut, lacinia libero. Etiam a dignissim lacus. Morbi malesuada orci at ipsum gravida, ut bibendum est dignissim. Suspendisse at dignissim est. Aenean eu tortor at justo placerat blandit. Pellentesque a tincidunt diam. Phasellus ullamcorper, ex vitae laoreet semper, ligula ligula blandit urna, sit amet ornare mi justo sit amet massa. Cras tincidunt sollicitudin tellus eget blandit.'
+			"createdAt": "today at 14:19",
+			"content": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi lorem, consequat at luctus in, tincidunt vel mi. Nam sit amet faucibus urna. Ut non urna eleifend, suscipit urna ut, lacinia libero. Etiam a dignissim lacus. Morbi malesuada orci at ipsum gravida, ut bibendum est dignissim. Suspendisse at dignissim est. Aenean eu tortor at justo placerat blandit. Pellentesque a tincidunt diam. Phasellus ullamcorper, ex vitae laoreet semper, ligula ligula blandit urna, sit amet ornare mi justo sit amet massa. Cras tincidunt sollicitudin tellus eget blandit."
 		}
 	],
 	"teams": [
 		{
 			"id": 1,
 			"name": "Fnatic",
-			"iconUrl": '/images/team-icons/fnatic.png'
+			"iconUrl": "/images/team-icons/fnatic.png"
 		}, {
 			"id": 2,
-			"name": 'Astralis',
-			"iconUrl": '/images/team-icons/astralis.png'
+			"name": "Astralis",
+			"iconUrl": "/images/team-icons/astralis.png"
 		}
 	],
 	"transmissions": [
 		{
 			"id": 1,
 			"gameId": 1,
-			"title": 'TRIO CASH CUP, TOP 54 SOLO and some more text that I don\'t remember yet',
-			"author": 'ryux',
-			"iconUrl": '/images/transmission-icon.png',
+			"title": "TRIO CASH CUP, TOP 54 SOLO and some more text that I don't remember yet",
+			"author": "ryux",
+			"iconUrl": "/images/transmission-icon.png",
 			"views": 445000
 		}
 	],
@@ -94,5 +94,5 @@
 			"teamAId": 1,
 			"teamBId": 2
 		}
-	],
+	]
 }
