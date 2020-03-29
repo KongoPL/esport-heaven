@@ -6,9 +6,12 @@ import Index from 'pages/index/Index';
 import News from 'pages/news/News';
 import Transmission from "./pages/transmission/Transmission";
 import Game from "./pages/game/Game";
+import Api from "./Api";
 
 const App: React.FC = () =>
 {
+	Api.init();
+
 	return (
 			<BrowserRouter>
 				<Layout>

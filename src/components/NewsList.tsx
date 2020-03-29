@@ -9,15 +9,8 @@ export default class NewsList extends React.Component<{ className?: string, data
 {
 	render()
 	{
+		const newsList = this.props.data.map( ( news, i ) => i == 0 ? <MainNews data={news} key={i}/> : <DefaultNews data={news} key={i} /> );
 		const className = 'news-list' + ( 'className' in this.props ? ' ' + this.props.className : '' );
-
-		const newsList = this.props.data.map( ( news, i ) =>
-		{
-			if ( news.isMain )
-				return <MainNews data={news} key={i} />;
-			else
-				return <DefaultNews data={news} key={i} />;
-		} );
 
 		return (
 			<div className={className}>
