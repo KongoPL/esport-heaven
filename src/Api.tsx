@@ -1,5 +1,6 @@
 import {INews, IGame, ITransmission, IUpcomingGame, ITeam} from "DataTypes";
 import firebase from "firebase";
+import DataSnapshot = firebase.database.DataSnapshot;
 
 export default class Api
 {
@@ -19,6 +20,11 @@ export default class Api
 	static getNewsList(): Promise<INews[]>
 	{
 		return Api.retrieveData('news');
+	}
+
+	static getNewsById(newsId: string | number): Promise<INews>
+	{
+		return Api.retrieveData(`news/${newsId}`);
 	}
 
 
@@ -70,27 +76,28 @@ export default class Api
 
 	private static async retrieveData(path: string): Promise<any>
 	{
-		return Api.db.ref(path).once('value').then((snapshot) => {
-			const value = snapshot.val();
+		return Api.db.ref(path).once('value').then((snapshot) => this.processData(snapshot));
+	}
 
-			console.log(value);
+	private static processData(snapshot: DataSnapshot)
+	{
+		const value = snapshot.val();
 
-			if(typeof value === 'object' && !Array.isArray(value))
+		if(typeof value === 'object' && !Array.isArray(value))
+		{
+			value.id = snapshot.key;
+		}
+		else if(Array.isArray(value))
+		{
+			for(let key in value)
 			{
-				value.id = snapshot.key;
-			}
-			else if(Array.isArray(value))
-			{
-				for(let key in value)
-				{
-					if(typeof value[key] !== 'object')
-						continue;
+				if(typeof value[key] !== 'object')
+					continue;
 
-					value[key].id = key;
-				}
+				value[key].id = key;
 			}
+		}
 
-			return value;
-		});
+		return value;
 	}
 }

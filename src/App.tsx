@@ -16,7 +16,7 @@ const App: React.FC = () =>
 			<BrowserRouter>
 				<Layout>
 					<Route path="/" exact component={Index} />
-					<Route path="/news/:id" exact component={News} />
+					<Route path="/news/:id" exact render={(props) => <News id={props.match.params.id} />} />
 					<Route path="/transmission/:id" exact component={Transmission} />
 					<Route path="/game/:id" exact component={Game} />
 				</Layout>
