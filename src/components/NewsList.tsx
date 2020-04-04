@@ -5,12 +5,14 @@ import { INews } from "DataTypes";
 import 'scss/components/NewsList.scss';
 import {Link} from "react-router-dom";
 
-export default class NewsList extends React.Component<{ className?: string, data: INews[] }>
+export default class NewsList extends React.Component<{ displayMainNews?: boolean, mainNewsDisplayType?: string, data: INews[] }>
 {
 	render()
 	{
-		const newsList = this.props.data.map( ( news, i ) => i == 0 ? <MainNews data={news} key={i}/> : <DefaultNews data={news} key={i} /> );
-		const className = 'news-list' + ( 'className' in this.props ? ' ' + this.props.className : '' );
+		const allowMainNews = 'displayMainNews' in this.props == false || this.props.displayMainNews === true;
+
+		const newsList = this.props.data.map( ( news, i ) => allowMainNews && i == 0 ? <MainNews data={news} key={i}/> : <DefaultNews data={news} key={i} /> );
+		const className = 'news-list ' + ( allowMainNews ? `main-${this.props.mainNewsDisplayType}` : 'no-main' );
 
 		return (
 			<div className={className}>

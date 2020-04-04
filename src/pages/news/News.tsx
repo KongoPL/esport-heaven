@@ -6,7 +6,7 @@ import SubpageBox from 'components/SubpageBox';
 
 import 'scss/pages/news.scss';
 
-export default class News extends React.Component<{id: string}, { newsList: INews[], news: INews }>
+export default class News extends React.Component<{id: string}, { newsList: INews[], news: INews | null }>
 {
 	constructor( props: any )
 	{
@@ -14,11 +14,11 @@ export default class News extends React.Component<{id: string}, { newsList: INew
 
 		this.state = {
 			newsList: [],
-			news: {}
+			news: null
 		};
 
 
-		Api.getNewsList().then( ( newsList ) => this.setState( { newsList } ) );
+		Api.getNewsList().then( ( newsList ) => this.setState( { newsList: newsList.slice(1, 5) } ) );
 		Api.getNewsById(this.props.id).then((news: INews) => this.setState({news}));
 	}
 
@@ -27,19 +27,26 @@ export default class News extends React.Component<{id: string}, { newsList: INew
 	{
 		return <>
 			<SubpageBox>
-				<header className="news-title">
-					<h2>{this.state.news.title}</h2>
-					<sub>Written 16th September 2019, at 08:47 by Jakub Poliszuk | Game: Counter-Strike: Global Offensive</sub>
-				</header>
-				<section className="news-content">
-					<div className="full-width news-image">
-						<img src={this.state.news.imageUrl} alt={this.state.news.imageUrl} />
-					</div>
-					{this.state.news.content}
-				</section>
+				{this.state.news &&
+					<>
+						<header className="news-title">
+							<h2>{this.state.news.title}</h2>
+							<sub>
+								Written 16th September 2019, at 08:47 by Jakub Poliszuk
+								{this.state.news.game && ` | Game: ${this.state.news.game.name}`}
+							</sub>
+						</header>
+						<section className="news-content">
+							<div className="full-width news-image">
+								<img src={this.state.news.imageUrl} alt={this.state.news.imageUrl} />
+							</div>
+							{this.state.news.content}
+						</section>
+					</>
+				}
 			</SubpageBox>
 			<h3>You may be interested in with those news:</h3>
-			<NewsList className="no-main" data={this.state.newsList} />
+			<NewsList displayMainNews={false} data={this.state.newsList} />
 			{/*<section id="comments">*/}
 			{/*	<h3>Comments (12):</h3>*/}
 			{/*	<SubpageBox>*/}

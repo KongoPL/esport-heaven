@@ -5,6 +5,8 @@ export interface INews
 	imageUrl: string,
 	title: string,
 	content?: string,
+	gameId: number | null,
+	game: IGame | undefined
 }
 
 

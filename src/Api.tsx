@@ -1,6 +1,5 @@
 import {INews, IGame, ITransmission, IUpcomingGame, ITeam} from "DataTypes";
 import firebase from "firebase";
-import DataSnapshot = firebase.database.DataSnapshot;
 
 export default class Api
 {
@@ -24,7 +23,11 @@ export default class Api
 
 	static getNewsById(newsId: string | number): Promise<INews>
 	{
-		return Api.retrieveData(`news/${newsId}`);
+		return Api.retrieveData(`news/${newsId}`).then(async (data) => {
+			await this.retrieveRelation(data, 'gameId', 'game', 'games/$1');
+
+			return data;
+		});
 	}
 
 
@@ -42,35 +45,13 @@ export default class Api
 
 	static getUpcomingGames(): Promise<IUpcomingGame[]>
 	{
-		return new Promise<IUpcomingGame[]>(async (resolve, reject) => {
-			// @todo fetch code below as a reusable method
-			const matches = await Api.retrieveData('matches');
-			const teamsToGet: number[] = [];
-
-			for(let match of matches)
+		return Api.retrieveData('matches')
+			.then(async (data) =>
 			{
-				if(teamsToGet.indexOf(match.teamAId) === -1)
-					teamsToGet.push(match.teamAId);
+				await this.retrieveRelationMultiple(data,['teamAId', 'teamBId'], ['teamA', 'teamB'], 'teams/$1');
 
-				if(teamsToGet.indexOf(match.teamBId) === -1)
-					teamsToGet.push(match.teamBId);
-			}
-
-			const teamPromises = teamsToGet.map((teamId) => Api.retrieveData(`teams/${teamId}`));
-			const teamsData = await Promise.all(teamPromises);
-			const teams: {[key:string]: ITeam} = {};
-
-			for(let key in teamsToGet)
-				teams[teamsToGet[key]] = teamsData[key];
-
-			for(let match of matches)
-			{
-				match.teamA = teams[match.teamAId];
-				match.teamB = teams[match.teamBId];
-			}
-
-			resolve(matches);
-		});
+				return data;
+			});
 	}
 
 
@@ -79,7 +60,7 @@ export default class Api
 		return Api.db.ref(path).once('value').then((snapshot) => this.processData(snapshot));
 	}
 
-	private static processData(snapshot: DataSnapshot)
+	private static processData(snapshot: firebase.database.DataSnapshot)
 	{
 		const value = snapshot.val();
 
@@ -99,5 +80,48 @@ export default class Api
 		}
 
 		return value;
+	}
+
+
+	private static retrieveRelation(data: any[] | any, dataKey: string, valueKey: string, retrievePath: string)
+	{
+		if(!Array.isArray(data))
+		{
+			data = [data];
+		}
+
+		return Api.retrieveRelationMultiple(data, [dataKey], [valueKey], retrievePath);
+	}
+
+
+	private static async retrieveRelationMultiple(data: any[], dataKeys: string[], valueKeys: string[], retrievePath: string)
+	{
+		const itemsToGet: any[] = [];
+
+		for(let row of data)
+		{
+			for(let key of dataKeys)
+			{
+				if(row[key] != null && itemsToGet.indexOf(row[key]) === -1)
+					itemsToGet.push(row[key]);
+			}
+		}
+
+		if(itemsToGet.length == 0)
+		{
+			return;
+		}
+
+		const getRetrievePath = (id: string) => retrievePath.replace(/\$1/g, id);
+		const itemsPromises = itemsToGet.map((id) => Api.retrieveData(getRetrievePath(id)));
+		const itemsData = await Promise.all(itemsPromises),
+			items: {[key:string]: any} = {};
+
+		for(let key in itemsToGet)
+			items[itemsToGet[key]] = itemsData[key];
+
+		for(let row of data)
+			for(let key in valueKeys)
+				row[valueKeys[key]] = items[row[dataKeys[key]]];
 	}
 }
