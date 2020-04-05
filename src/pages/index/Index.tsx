@@ -14,7 +14,7 @@ export default class Index extends React.Component<{}, { newsList: INews[] }>
 
 		this.state = {
 			newsList: []
-		}
+		};
 
 		Api.getNewsList().then( ( newsList ) => this.setState( { newsList } ) );
 	}

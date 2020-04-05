@@ -2,41 +2,69 @@ import React from 'react';
 import SubpageBox from 'components/SubpageBox';
 import TwitchTransmission from "components/TwitchTransmission";
 import 'scss/pages/game.scss';
+import Api from "../../Api";
+import {IUpcomingGame} from "../../DataTypes";
 
 
-export default class Game extends React.Component<{}, {}>
+export default class Game extends React.Component<{id: number}, {match: IUpcomingGame | null}>
 {
+	constructor(props: any)
+	{
+		super(props);
+
+		this.state = {
+			match: null
+		};
+
+		Api.getMatchById(this.props.id).then((match) => this.setState({match}));
+	}
+
+	componentDidUpdate(prevProps: Readonly<{ id: number }>, prevState: Readonly<{ match: IUpcomingGame }>, snapshot?: any): void
+	{
+		if(this.props.id != prevProps.id)
+		{
+			Api.getMatchById(this.props.id).then((match) => this.setState({match}));
+		}
+	}
+
 	render()
 	{
+		if(!this.state.match)
+			return null;
+
+		const match = this.state.match;
+
 		return <SubpageBox>
-			<h2>ESL Fnatic vs. Astralis (BO 3)</h2>
+			<h2>{match.title}</h2>
 			<section className="game-overview">
 				<h3>Game's overview</h3>
-				<GameOverview/>
+				<GameOverview {...match}/>
 			</section>
 			<section className="transmission">
 				<h3>Match transmission</h3>
-				<TwitchTransmission channelName={"izakooo"}/>
+				<TwitchTransmission channelName={match.transmissionChannelId}/>
 			</section>
 		</SubpageBox>;
 	}
 }
 
 
-function GameOverview()
+function GameOverview(match: IUpcomingGame)
 {
 	return <div className="game-overview">
 		<div className="teams-score">
-			<TeamDescription name="Fnatic" image="/images/team-icons/fnatic-big.png" className="team-a" />
-			<TeamDescription name="Astralis" image="/images/team-icons/astralis-big.png" className="team-b" />
+			<TeamDescription name={match.teamA.name} image={match.teamA.imageUrl} className="team-a" />
+			<TeamDescription name={match.teamB.name} image={match.teamB.imageUrl} className="team-b" />
 			<div className="score">
-				1 : 0
+				{match.teamAScore} : {match.teamBScore}
 			</div>
 		</div>
 		<div className="maps">
-			<div className="map left"><span className="text">Mirage</span></div>
-			<div className="map right"><span className="text">Inferno</span></div>
-			<div className="map"><span className="text">Cache</span></div>
+			{match.maps.map((v, i) =>
+				<div key={i} className={`map${'winnerTeam' in v ? (v.winnerTeam == match.teamAId ? ' left' : ' right') : ''}`}>
+					<span className="text">{v.data.name}</span>
+				</div>
+			)}
 		</div>
 	</div>;
 }

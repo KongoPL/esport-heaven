@@ -3,6 +3,7 @@ import {IComment, INews} from 'DataTypes';
 import Api from 'Api';
 import NewsList from 'components/NewsList';
 import SubpageBox from 'components/SubpageBox';
+import Moment from 'moment';
 
 import 'scss/pages/news.scss';
 
@@ -23,6 +24,13 @@ export default class News extends React.Component<{id: string}, { newsList: INew
 	}
 
 
+	componentDidUpdate(prevProps: Readonly<{ id: string }>, prevState: Readonly<{ newsList: INews[]; news: INews | null }>, snapshot?: any): void
+	{
+		if(prevProps.id != this.props.id)
+			Api.getNewsById(this.props.id).then((news: INews) => this.setState({news}));
+	}
+
+
 	render()
 	{
 		return <>
@@ -32,7 +40,7 @@ export default class News extends React.Component<{id: string}, { newsList: INew
 						<header className="news-title">
 							<h2>{this.state.news.title}</h2>
 							<sub>
-								Written 16th September 2019, at 08:47 by Jakub Poliszuk
+								Written {Moment(this.state.news.createDate).format('Do MMMM YYYY, \\at HH:mm')}
 								{this.state.news.game && ` | Game: ${this.state.news.game.name}`}
 							</sub>
 						</header>

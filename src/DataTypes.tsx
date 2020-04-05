@@ -6,7 +6,8 @@ export interface INews
 	title: string,
 	content?: string,
 	gameId: number | null,
-	game: IGame | undefined
+	game: IGame | undefined,
+	createDate: string
 }
 
 
@@ -23,20 +24,33 @@ export interface ITransmission
 	title: string,
 	author: string,
 	iconUrl: string,
-	views: string
+	views: string,
+	channelId: string
 }
 
 export interface IUpcomingGame
 {
-	id: number,
+	id: string,
+	title: string,
+	teamAId: number,
+	teamBId: number,
 	teamA: ITeam,
-	teamB: ITeam
+	teamB: ITeam,
+	teamAScore: number,
+	teamBScore: number,
+	maps: {
+		mapId: number,
+		winnerTeam: number,
+		data: IMap
+	}[],
+	transmissionChannelId: string
 }
 
 export interface ITeam
 {
 	name: string,
-	iconUrl: string
+	iconUrl: string,
+	imageUrl: string
 }
 
 export interface IComment
@@ -45,4 +59,10 @@ export interface IComment
 	author: string,
 	createdAt: string,
 	content: string,
+}
+
+export interface IMap
+{
+	gameId: number,
+	name: string
 }

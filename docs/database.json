@@ -27,23 +27,28 @@
 			"gameId": null,
 			"imageUrl": "/images/news-images/astralis.png",
 			"title": "ASTRALIS WINS ELEAGUE PREMIER 2018!",
-			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo et ipsum ornare lobortis at et orci. Mauris id ligula laoreet, ornare lacus tempor, mollis turpis. In et orci eget quam viverra feugiat. Sed non mi posuere, hendrerit orci nec, tempor turpis. Donec et faucibus eros, quis dictum lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dui justo, consectetur sit amet ipsum non, mollis euismod quam. Maecenas accumsan malesuada porta. Duis vitae orci auctor, pharetra lacus eu, laoreet ipsum. Phasellus eu nisl est. Suspendisse velit elit, finibus quis ex sit amet, vehicula convallis ligula. Ut ac nisl et mi scelerisque tincidunt."
+			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo et ipsum ornare lobortis at et orci. Mauris id ligula laoreet, ornare lacus tempor, mollis turpis. In et orci eget quam viverra feugiat. Sed non mi posuere, hendrerit orci nec, tempor turpis. Donec et faucibus eros, quis dictum lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dui justo, consectetur sit amet ipsum non, mollis euismod quam. Maecenas accumsan malesuada porta. Duis vitae orci auctor, pharetra lacus eu, laoreet ipsum. Phasellus eu nisl est. Suspendisse velit elit, finibus quis ex sit amet, vehicula convallis ligula. Ut ac nisl et mi scelerisque tincidunt.",
+			"createDate": "2019-09-16 08:47:53"
 		}, {
 			"gameId": 1,
 			"imageUrl": "/images/news-images/fnatic.png",
-			"title": "FNatic wins League of Legends cup 2019!"
+			"title": "FNatic wins League of Legends cup 2019!",
+			"createDate": "2019-09-17 08:47:53"
 		}, {
 			"gameId": 1,
 			"imageUrl": "/images/news-images/fnatic.png",
-			"title": "FNatic wins League of Legends cup 2019!"
+			"title": "FNatic wins League of Legends cup 2019!",
+			"createDate": "2020-04-05 13:15:53"
 		}, {
 			"gameId": 1,
 			"imageUrl": "/images/news-images/fnatic.png",
-			"title": "FNatic wins League of Legends cup 2019!"
+			"title": "FNatic wins League of Legends cup 2019!",
+			"createDate": "2020-04-05 13:15:53"
 		}, {
 			"gameId": 1,
 			"imageUrl": "/images/news-images/fnatic.png",
-			"title": "FNatic wins League of Legends cup 2019!"
+			"title": "FNatic wins League of Legends cup 2019!",
+			"createDate": "2020-04-05 13:15:53"
 		}
 	],
 	"comments": {
@@ -60,26 +65,56 @@
 	"teams": [
 		{
 			"name": "Fnatic",
-			"iconUrl": "/images/team-icons/fnatic.png"
+			"iconUrl": "/images/team-icons/fnatic.png",
+			"imageUrl": "/images/team-icons/fnatic-big.png"
 		}, {
 			"name": "Astralis",
-			"iconUrl": "/images/team-icons/astralis.png"
+			"iconUrl": "/images/team-icons/astralis.png",
+			"imageUrl": "/images/team-icons/astralis-big.png"
 		}
 	],
 	"transmissions": [
 		{
 			"gameId": 0,
 			"title": "TRIO CASH CUP, TOP 54 SOLO and some more text that I don't remember yet",
-			"author": "ryux",
+			"author": "Izak TV",
+			"channelId": "izakooo",
 			"iconUrl": "/images/transmission-icon.png",
 			"views": 445000
 		}
 	],
-	"maps": [],
+	"maps": [
+		{
+			"gameId": 0,
+			"name": "Mirage"
+		}, {
+			"gameId": 0,
+			"name": "Inferno"
+		}, {
+			"gameId": 0,
+			"name": "Cache"
+		}
+	],
 	"matches": [
 		{
+			"title": "ESL Fnatic vs. Astralis (BO 3)",
 			"teamAId": 0,
-			"teamBId": 1
+			"teamBId": 1,
+			"teamAScore": 1,
+			"teamBScore": 1,
+			"maps": [
+				{
+					"mapId": 0,
+					"winnerTeam": 0
+				}, {
+					"mapId": 1,
+					"winnerTeam": 1
+				}, {
+					"mapId": 2,
+					"winnerTeam": null
+				}
+			],
+			"transmissionChannelId": "izakooo"
 		}
 	]
 }

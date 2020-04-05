@@ -43,12 +43,33 @@ export default class Api
 	}
 
 
+	static getTransmissionById(id: string | number): Promise<ITransmission>
+	{
+		return Api.retrieveData(`transmissions/${id}`);
+	}
+
+
 	static getUpcomingGames(): Promise<IUpcomingGame[]>
 	{
 		return Api.retrieveData('matches')
 			.then(async (data) =>
 			{
 				await this.retrieveRelationMultiple(data,['teamAId', 'teamBId'], ['teamA', 'teamB'], 'teams/$1');
+
+				return data;
+			});
+	}
+
+
+	static getMatchById(id: string | number): Promise<IUpcomingGame>
+	{
+		return Api.retrieveData(`matches/${id}`)
+			.then(async (data) =>
+			{
+				await this.retrieveRelation(data,['teamAId', 'teamBId'], ['teamA', 'teamB'], 'teams/$1');
+
+				for(let map of data.maps)
+					await this.retrieveRelation(map, 'mapId', 'data', 'maps/$1');
 
 				return data;
 			});
@@ -83,34 +104,34 @@ export default class Api
 	}
 
 
-	private static retrieveRelation(data: any[] | any, dataKey: string, valueKey: string, retrievePath: string)
+	private static retrieveRelation(data: any[] | any, dataKey: string | string[], valueKey: string | string[], retrievePath: string)
 	{
 		if(!Array.isArray(data))
 		{
 			data = [data];
 		}
 
-		return Api.retrieveRelationMultiple(data, [dataKey], [valueKey], retrievePath);
+		return Api.retrieveRelationMultiple(data, dataKey, valueKey, retrievePath);
 	}
 
 
-	private static async retrieveRelationMultiple(data: any[], dataKeys: string[], valueKeys: string[], retrievePath: string)
+	private static async retrieveRelationMultiple(data: any[], dataKeys: string | string[], valueKeys: string | string[], retrievePath: string)
 	{
+		if(typeof dataKeys == 'string')
+			dataKeys = [dataKeys];
+
+		if(typeof valueKeys == 'string')
+			valueKeys = [valueKeys];
+
 		const itemsToGet: any[] = [];
 
 		for(let row of data)
-		{
 			for(let key of dataKeys)
-			{
 				if(row[key] != null && itemsToGet.indexOf(row[key]) === -1)
 					itemsToGet.push(row[key]);
-			}
-		}
 
 		if(itemsToGet.length == 0)
-		{
 			return;
-		}
 
 		const getRetrievePath = (id: string) => retrievePath.replace(/\$1/g, id);
 		const itemsPromises = itemsToGet.map((id) => Api.retrieveData(getRetrievePath(id)));
