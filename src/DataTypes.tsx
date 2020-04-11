@@ -28,9 +28,9 @@ export interface ITransmission
 	channelId: string
 }
 
-export interface IUpcomingGame
+export interface IMatch
 {
-	id: string,
+	id: number,
 	title: string,
 	teamAId: number,
 	teamBId: number,
@@ -38,6 +38,8 @@ export interface IUpcomingGame
 	teamB: ITeam,
 	teamAScore: number,
 	teamBScore: number,
+	majorId: number,
+	major: IMajor,
 	maps: {
 		mapId: number,
 		winnerTeam: number,
@@ -64,5 +66,13 @@ export interface IComment
 export interface IMap
 {
 	gameId: number,
-	name: string
+	name: string,
+	iconUrl: string,
+}
+
+export interface IMajor
+{
+	id: number,
+	name: string,
+	iconUrl: string
 }

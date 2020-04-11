@@ -7,6 +7,7 @@ import News from 'pages/news/News';
 import Transmission from "./pages/transmission/Transmission";
 import Game from "./pages/game/Game";
 import Api from "./Api";
+import UpcomingGames from "./pages/upcoming-games/UpcomingGames";
 
 const App: React.FC = () =>
 {
@@ -16,9 +17,11 @@ const App: React.FC = () =>
 			<BrowserRouter>
 				<Layout>
 					<Route path="/" exact component={Index} />
+					<Route path="/upcoming-games" exact  render={(props) => <UpcomingGames />} />
+
 					<Route path="/news/:id" exact render={(props) => <News id={props.match.params.id} />} />
 					<Route path="/transmission/:id" exact render={(props) => <Transmission id={props.match.params.id}/>} />
-					<Route path="/game/:id" exact  render={(props) => <Game id={props.match.params.id}/>} />
+					<Route path="/game/:id" exact render={(props) => <Game id={props.match.params.id}/>} />
 				</Layout>
 			</BrowserRouter>
 	);

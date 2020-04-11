@@ -86,13 +86,16 @@
 	"maps": [
 		{
 			"gameId": 0,
-			"name": "Mirage"
+			"name": "Mirage",
+			"iconUrl": "/images/maps/0/mirage.png"
 		}, {
 			"gameId": 0,
-			"name": "Inferno"
+			"name": "Inferno",
+			"iconUrl": "/images/maps/0/mirage.png"
 		}, {
 			"gameId": 0,
-			"name": "Cache"
+			"name": "Cache",
+			"iconUrl": "/images/maps/0/mirage.png"
 		}
 	],
 	"matches": [
@@ -102,6 +105,7 @@
 			"teamBId": 1,
 			"teamAScore": 1,
 			"teamBScore": 1,
+			"majorId": 0,
 			"maps": [
 				{
 					"mapId": 0,
@@ -115,6 +119,12 @@
 				}
 			],
 			"transmissionChannelId": "izakooo"
+		}
+	],
+	"majors": [
+		{
+			"name": "CS:GO Major League Boston 2020",
+			"iconUrl": "/images/majors/boston-2020.png"
 		}
 	]
 }

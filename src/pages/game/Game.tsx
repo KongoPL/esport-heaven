@@ -3,10 +3,10 @@ import SubpageBox from 'components/SubpageBox';
 import TwitchTransmission from "components/TwitchTransmission";
 import 'scss/pages/game.scss';
 import Api from "../../Api";
-import {IUpcomingGame} from "../../DataTypes";
+import {IMatch} from "../../DataTypes";
 
 
-export default class Game extends React.Component<{id: number}, {match: IUpcomingGame | null}>
+export default class Game extends React.Component<{id: number}, {match: IMatch | null}>
 {
 	constructor(props: any)
 	{
@@ -19,7 +19,7 @@ export default class Game extends React.Component<{id: number}, {match: IUpcomin
 		Api.getMatchById(this.props.id).then((match) => this.setState({match}));
 	}
 
-	componentDidUpdate(prevProps: Readonly<{ id: number }>, prevState: Readonly<{ match: IUpcomingGame }>, snapshot?: any): void
+	componentDidUpdate(prevProps: Readonly<{ id: number }>, prevState: Readonly<{ match: IMatch }>, snapshot?: any): void
 	{
 		if(this.props.id != prevProps.id)
 		{
@@ -35,7 +35,7 @@ export default class Game extends React.Component<{id: number}, {match: IUpcomin
 		const match = this.state.match;
 
 		return <SubpageBox>
-			<h2>{match.title}</h2>
+			<h2 className="no-margin">{match.title}</h2>
 			<section className="game-overview">
 				<h3>Game's overview</h3>
 				<GameOverview {...match}/>
@@ -49,7 +49,7 @@ export default class Game extends React.Component<{id: number}, {match: IUpcomin
 }
 
 
-function GameOverview(match: IUpcomingGame)
+function GameOverview(match: IMatch)
 {
 	return <div className="game-overview">
 		<div className="teams-score">

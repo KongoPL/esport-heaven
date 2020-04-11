@@ -1,11 +1,11 @@
 import React from 'react';
 
 import 'scss/layout/UpcomingGames.scss';
-import { IUpcomingGame } from 'DataTypes';
+import { IMatch } from 'DataTypes';
 import Api from 'Api';
 import {Link} from "react-router-dom";
 
-export default class UpcomingGames extends React.Component<{}, { games: IUpcomingGame[] }>
+export default class UpcomingGames extends React.Component<{}, { games: IMatch[] }>
 {
 	constructor( props: any )
 	{
@@ -15,7 +15,7 @@ export default class UpcomingGames extends React.Component<{}, { games: IUpcomin
 			games: []
 		};
 
-		Api.getUpcomingGames().then( ( games ) => this.setState( { games } ) );
+		Api.getMatches().then( ( games ) => this.setState( { games } ) );
 	}
 
 	render()
@@ -23,7 +23,7 @@ export default class UpcomingGames extends React.Component<{}, { games: IUpcomin
 		return (
 			<div className="box upcoming-games">
 				<header>Upcoming games</header>
-				{this.state.games.map( ( v, i ) => <UpcomingGame game={v} key={i} />)}
+				{this.state.games.map( ( v, i ) => <Match game={v} key={i} />)}
 				<div className="margin-top-10 text-center">
 					<a href="#" className="btn">Load more</a>
 				</div>
@@ -33,7 +33,7 @@ export default class UpcomingGames extends React.Component<{}, { games: IUpcomin
 }
 
 
-function UpcomingGame( props: { game: IUpcomingGame } )
+function Match( props: { game: IMatch } )
 {
 	return (
 		<Link to={`/game/${props.game.id}`}>

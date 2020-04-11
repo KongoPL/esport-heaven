@@ -1,4 +1,4 @@
-import {INews, IGame, ITransmission, IUpcomingGame, ITeam} from "DataTypes";
+import {INews, IGame, ITransmission, IMatch, ITeam} from "DataTypes";
 import firebase from "firebase";
 
 export default class Api
@@ -49,24 +49,29 @@ export default class Api
 	}
 
 
-	static getUpcomingGames(): Promise<IUpcomingGame[]>
+	static getMatches(): Promise<IMatch[]>
 	{
 		return Api.retrieveData('matches')
 			.then(async (data) =>
 			{
 				await this.retrieveRelationMultiple(data,['teamAId', 'teamBId'], ['teamA', 'teamB'], 'teams/$1');
+				await this.retrieveRelationMultiple(data,'majorId', 'major', 'majors/$1');
+
+				for(let row of data)
+					await this.retrieveRelationMultiple(row.maps, 'mapId', 'data', 'maps/$1');
 
 				return data;
 			});
 	}
 
 
-	static getMatchById(id: string | number): Promise<IUpcomingGame>
+	static getMatchById(id: string | number): Promise<IMatch>
 	{
 		return Api.retrieveData(`matches/${id}`)
 			.then(async (data) =>
 			{
 				await this.retrieveRelation(data,['teamAId', 'teamBId'], ['teamA', 'teamB'], 'teams/$1');
+				await this.retrieveRelation(data,'majorId', 'major', 'majors/$1');
 
 				for(let map of data.maps)
 					await this.retrieveRelation(map, 'mapId', 'data', 'maps/$1');

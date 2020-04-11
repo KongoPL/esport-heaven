@@ -5,7 +5,7 @@ import Api from 'Api';
 import { ITransmission } from 'DataTypes';
 import {Link} from "react-router-dom";
 
-export default class UpcomingGames extends React.Component<{}, { transmissions: ITransmission[] }>
+export default class Matchs extends React.Component<{}, { transmissions: ITransmission[] }>
 {
 	constructor( props: any )
 	{
