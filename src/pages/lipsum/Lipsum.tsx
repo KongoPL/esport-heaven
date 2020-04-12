@@ -1,13 +1,13 @@
 import React from 'react';
 import SubpageBox from 'components/SubpageBox';
 
-export default class WhoWeAre extends React.Component<any>
+export default class Lipsum extends React.Component<{title: string}>
 {
 	render()
 	{
 		return <>
 			<SubpageBox>
-				<h2 className="no-margin">Who we are?</h2>
+				<h2 className="no-margin">{this.props.title}</h2>
 				<img src="/images/other/me.jpg" style={{float: 'right', width: '386px', margin: '0px 0px 10px 15px'}} />
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales ipsum porta, eleifend nisl at, blandit risus. Nam ac malesuada erat. Integer porta lacinia felis. Mauris erat odio, vehicula quis faucibus a, molestie at urna. Aliquam sollicitudin ipsum id gravida bibendum. Morbi velit nunc, ultrices eu dui ac, viverra tincidunt nibh. Aliquam consequat tristique lorem sed condimentum. In nec accumsan libero. Mauris accumsan magna at tortor scelerisque, sit amet facilisis justo elementum. Ut eu laoreet diam, ut sagittis elit. Sed sit amet pulvinar ligula. Vestibulum pulvinar viverra diam, fringilla facilisis turpis pulvinar eget. Praesent vitae aliquet sem, vitae elementum justo. Morbi faucibus, eros sit amet venenatis volutpat, metus augue laoreet eros, ac feugiat mi justo id lacus. Donec a aliquam orci.

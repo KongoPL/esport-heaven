@@ -48,9 +48,9 @@ export default class Layout extends React.Component<{}, { games: IGame[] }>
 		] ),
 
 		new FooterLinkColumn( EColumnLocation.LOCATION_RIGHT_2, 'Career', [
-			<Link to="/">Who we are?</Link>,
-			<Link to="/">Our team</Link>,
-			<Link to="/">Work with us!</Link>
+			<Link to="/who-we-are">Who we are?</Link>,
+			<Link to="/our-team">Our team</Link>,
+			<Link to="/work-with-us">Work with us!</Link>
 		] ),
 	];
 
