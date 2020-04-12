@@ -81,20 +81,10 @@
 			grid-area: team-b;
 		}
 
-		.team-a,
-		.team-b
+		.team-a .score,
+		.team-b .score
 		{
-			img
-			{
-				width: 128px;
-				height:128px;
-				object-fit: contain;
-			}
-
-			.score
-			{
-				font: bold $font-h1;
-			}
+			font: bold $font-h1;
 		}
 	}
 }

@@ -5,6 +5,7 @@ import {IMajor, IMatch} from "../../DataTypes";
 
 import 'scss/pages/upcoming-games.scss';
 import {Link} from "react-router-dom";
+import TeamLogo from "../../components/TeamLogo";
 
 export default class UpcomingGames extends React.Component<any, {majors: IMajorInternal[]}>
 {
@@ -97,11 +98,11 @@ function MajorMatch(match: IMatch & {majorIconUrl: string})
 				<sub>{mapsNames}</sub>
 			</div>
 			<div className="team-a">
-				<img src={match.teamA.imageUrl} />
+				<TeamLogo src={match.teamA.imageUrl} />
 				<div className="score">{teamAScore}</div>
 			</div>
 			<div className="team-b">
-				<img src={match.teamB.imageUrl} />
+				<TeamLogo src={match.teamB.imageUrl} />
 				<div className="score">{teamBScore}</div>
 			</div>
 		</div>

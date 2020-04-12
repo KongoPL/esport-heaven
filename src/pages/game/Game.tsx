@@ -4,6 +4,7 @@ import TwitchTransmission from "components/TwitchTransmission";
 import 'scss/pages/game.scss';
 import Api from "../../Api";
 import {IMatch} from "../../DataTypes";
+import TeamLogo from "../../components/TeamLogo";
 
 
 export default class Game extends React.Component<{id: number}, {match: IMatch | null}>
@@ -73,7 +74,7 @@ function TeamDescription(props: {name: string, image: string, className?: string
 {
 	return <div className={`team-description ${props.className}`}>
 		<div className="image">
-			<img src={props.image} alt="team-logo" />
+			<TeamLogo src={props.image} className="image" alt="team-logo" />
 		</div>
 		<div className="name">
 			{props.name}
