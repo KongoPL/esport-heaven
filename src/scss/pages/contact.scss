@@ -1,0 +1,23 @@
+@import 'scss/_autoload';
+
+.contact-text
+{
+	width: 75%;
+}
+
+.contact-form
+{
+	width: 50%;
+
+	margin: 0px auto;
+
+	display: block;
+
+	text-align: center;
+
+	textarea
+	{
+		min-height: 200px;
+		max-height: 200px;
+	}
+}

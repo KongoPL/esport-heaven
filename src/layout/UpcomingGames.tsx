@@ -25,7 +25,7 @@ export default class UpcomingGames extends React.Component<{}, { games: IMatch[]
 				<header>Upcoming games</header>
 				{this.state.games.map( ( v, i ) => <Match game={v} key={i} />)}
 				<div className="margin-top-10 text-center">
-					<a href="#" className="btn">Load more</a>
+					<Link to="/upcoming-games" className="btn">Show more</Link>
 				</div>
 			</div>
 		);

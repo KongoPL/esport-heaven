@@ -24,7 +24,8 @@
 
 input[type="text"],
 input[type="password"],
-input[type="email"]
+input[type="email"],
+textarea
 {
 	padding: 4px 7px;
 
@@ -47,5 +48,28 @@ input[type="email"]
 	&::placeholder 
 	{
 		font-style: italic;
+	}
+}
+
+textarea
+{
+	background: rgba(0,0,0,0.1);
+}
+
+
+.block-form
+{
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	textarea
+	{
+		width: 100%;
+
+		display: block;
+
+		margin: 10px 0px;
+
+		box-sizing: border-box;
 	}
 }

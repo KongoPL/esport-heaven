@@ -13,6 +13,7 @@ import Lipsum from "./pages/lipsum/Lipsum";
 
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Contact from "./pages/contact/Contact";
 
 const App: React.FC = () =>
 {
@@ -26,6 +27,7 @@ const App: React.FC = () =>
 					<Switch>
 						<Route path="/" exact component={Index} />
 						<Route path="/upcoming-games" exact  render={(props) => <UpcomingGames />} />
+						<Route path="/contact" exact  render={(props) => <Contact />} />
 						<Route path="/who-we-are" exact  render={(props) => <Lipsum title="Who we are?" />} />
 						<Route path="/our-team" exact  render={(props) => <Lipsum title="Our Team" />} />
 						<Route path="/work-with-us" exact  render={(props) => <Lipsum title="Work with us" />} />

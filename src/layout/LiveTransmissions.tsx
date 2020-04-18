@@ -28,7 +28,7 @@ export default class Matchs extends React.Component<{}, { transmissions: ITransm
 				<header>Live transmissions</header>
 				{transmissions}
 				<div className="text-center">
-					<a href="#" className="btn">Load more</a>
+					<Link to="/live-transmissions" className="btn">Show more</Link>
 				</div>
 			</div>
 		);

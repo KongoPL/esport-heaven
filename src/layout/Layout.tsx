@@ -25,8 +25,8 @@ export default class Layout extends React.Component<{}, { games: IGame[] }>
 	private mainLinks = [
 		<Link to="/">Main page</Link>,
 		<Link to="/upcoming-games">Upcoming games</Link>,
-		<Link to="/">Live transmissions</Link>,
-		<Link to="/">Contact</Link>,
+		<Link to="/live-transmissions">Live transmissions</Link>,
+		<Link to="/contact">Contact</Link>,
 		<Link to="/">My Account</Link>
 	];
 
@@ -34,8 +34,8 @@ export default class Layout extends React.Component<{}, { games: IGame[] }>
 		new FooterLinkColumn( EColumnLocation.LOCATION_LEFT_1, 'Shortcuts', [
 			<Link to="/">Main page</Link>,
 			<Link to="/upcoming-games">Upcoming games</Link>,
-			<Link to="/">Live transmissions</Link>,
-			<Link to="/">Contact</Link>,
+			<Link to="/live-transmissions">Live transmissions</Link>,
+			<Link to="/contact">Contact</Link>,
 		] ),
 
 		new FooterLinkColumn( EColumnLocation.LOCATION_LEFT_2, 'Games' ),
