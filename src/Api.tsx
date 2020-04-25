@@ -128,8 +128,8 @@ export default class Api
 
 					query = querybase.ref(query, []).where({[condition[0]]: condition[1]});
 
-					// query = query.equalTo("2019-09-16 08:47:53", "0");
-					// query = query.equalTo(condition[1], condition[0]);
+					query = query.equalTo("2019-09-16 08:47:53", "0");
+					query = query.equalTo(condition[1], condition[0]);
 					break;
 
 				case 'startAt':
@@ -147,10 +147,10 @@ export default class Api
 			}
 		}
 
-		// if(typeof orderBy === "string")
-		// 	query = query.orderByChild(orderBy);
-		// else
-		// 	query = query.orderByPriority();
+		if(typeof orderBy === "string")
+			query = query.orderByChild(orderBy);
+		else
+			query = query.orderByPriority();
 
 
 		if(typeof limit === "number" || Array.isArray(limit))
