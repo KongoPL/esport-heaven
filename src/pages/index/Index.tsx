@@ -5,25 +5,55 @@ import 'scss/pages/index.scss';
 import Api from 'Api';
 import NewsList from 'components/NewsList';
 
-
-export default class Index extends React.Component<{}, { newsList: INews[] }>
+export default class Index extends React.Component<{}, IIndexState>
 {
 	constructor( props: any )
 	{
 		super( props );
 
 		this.state = {
-			newsList: []
+			newsListMain: [],
+			newsListOther: [],
+			loadedNewsCount: 10,
+			displayLoadMoreButton: true
 		};
 
-		Api.getNewsList().then( ( newsList ) => this.setState( { newsList } ) );
+		this.loadNews();
+	}
+
+	componentDidUpdate(prevProps: Readonly<{}>, prevState: Readonly<IIndexState>, snapshot?: any): void
+	{
+		if(prevState.loadedNewsCount != this.state.loadedNewsCount)
+			this.loadNews();
+	}
+
+	private loadNews()
+	{
+		Api.getNewsList(0, this.state.loadedNewsCount).then( ( newsList ) =>
+		{
+			if(!newsList)
+				return;
+
+			this.setState( {
+				newsListMain: newsList.slice(0, 5),
+				newsListOther: newsList.slice(5, this.state.loadedNewsCount),
+				displayLoadMoreButton: (newsList.length === this.state.loadedNewsCount)
+			} )
+		} );
+	}
+
+	private loadMoreNews(count: number)
+	{
+		this.setState((state) => ({
+			loadedNewsCount: state.loadedNewsCount + count
+		}));
 	}
 
 	render()
 	{
 		return (
 			<>
-				<NewsList mainNewsDisplayType="wide" data={this.state.newsList} />
+				<NewsList mainNewsDisplayType="wide" data={this.state.newsListMain} />
 
 				<div className="google-ad-news">
 					<img src="/images/ad.png" style={{ width: '100%' }} alt="" />
@@ -33,12 +63,20 @@ export default class Index extends React.Component<{}, { newsList: INews[] }>
 					<img src="/images/contest.png" style={{ width: '100%' }} alt="" />
 				</div>
 
-				<NewsList mainNewsDisplayType="side" data={this.state.newsList} />
+				<NewsList mainNewsDisplayType="side" data={this.state.newsListOther} />
 
-				<div className="text-center">
-					<a className="btn large">Load more</a>
-				</div>
+				{this.state.displayLoadMoreButton && <div className="text-center">
+					<a className="btn large" onClick={() => this.loadMoreNews(5)}>Load more</a>
+				</div>}
 			</>
 		);
 	}
+}
+
+interface IIndexState
+{
+	newsListMain: INews[],
+	newsListOther: INews[],
+	loadedNewsCount: number,
+	displayLoadMoreButton: boolean
 }

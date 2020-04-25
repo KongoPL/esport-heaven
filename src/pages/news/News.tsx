@@ -19,7 +19,7 @@ export default class News extends React.Component<{id: string}, { newsList: INew
 		};
 
 
-		Api.getNewsList().then( ( newsList ) => this.setState( { newsList: newsList.slice(1, 5) } ) );
+		Api.getNewsList(0).then( ( newsList ) => this.setState( { newsList: newsList.slice(1, 5) } ) );
 		Api.getNewsById(this.props.id).then((news: INews) => this.setState({news}));
 	}
 
