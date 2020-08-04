@@ -14,9 +14,22 @@ import Lipsum from "./pages/lipsum/Lipsum";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Contact from "./pages/contact/Contact";
+import {Database as dbData}  from "./Database";
+import {Database, DatabaseDataObject, MemoryApi} from "relational-api-database";
+
 
 const App: React.FC = () =>
 {
+	// Database setup:
+	const memoryApi = new MemoryApi;
+
+	memoryApi.loadDatabase(dbData);
+
+	const db = new Database(memoryApi);
+
+	DatabaseDataObject.injectDatabase(db);
+
+
 	Api.init();
 
 	return (

@@ -1,0 +1,30 @@
+import {DatabaseDataObject, ERelationType, TRelations} from "relational-api-database";
+import Comment from "./Comment";
+
+export default class News extends DatabaseDataObject<News>
+{
+	public id: number = 0;
+	public gameId: number | null = null;
+	public imageUrl: string = '';
+	public title: string = '';
+	public content: string = '';
+	public createDate: string = '';
+
+	public comments: Comment[] = [];
+
+	static tableName(): string
+	{
+		return 'news';
+	}
+
+	protected relations(): TRelations
+	{
+		return {
+			comments: {
+				type: ERelationType.ONE_MANY,
+				model: Comment,
+				relation: {id: 'newsId'}
+			}
+		};
+	}
+}
