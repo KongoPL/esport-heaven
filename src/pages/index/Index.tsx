@@ -4,6 +4,7 @@ import { INews } from 'DataTypes';
 import 'scss/pages/index.scss';
 import Api from 'Api';
 import NewsList from 'components/NewsList';
+import News from "../../models/News";
 
 export default class Index extends React.Component<{}, IIndexState>
 {
@@ -29,7 +30,9 @@ export default class Index extends React.Component<{}, IIndexState>
 
 	private loadNews()
 	{
-		Api.getNewsList(0, this.state.loadedNewsCount).then( ( newsList ) =>
+		// this.state.loadedNewsCount
+
+		News.findByAttributes({gameId: 1}).then( ( newsList ) =>
 		{
 			if(!newsList)
 				return;

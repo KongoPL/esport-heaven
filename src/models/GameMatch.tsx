@@ -3,7 +3,7 @@ import Team from "./Team";
 import Major from "./Major";
 import MatchMap from "./MatchMap";
 
-export default class Match extends DatabaseDataObject<Match>
+export default class GameMatch extends DatabaseDataObject<GameMatch>
 {
 	public id: number = 0;
 	public title: string = '';

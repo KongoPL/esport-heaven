@@ -4,6 +4,7 @@ import 'scss/layout/LiveTransmissions.scss';
 import Api from 'Api';
 import { ITransmission } from 'DataTypes';
 import {Link} from "react-router-dom";
+import Transmission from "../models/Transmission";
 
 export default class Matchs extends React.Component<{}, { transmissions: ITransmission[] }>
 {
@@ -15,7 +16,7 @@ export default class Matchs extends React.Component<{}, { transmissions: ITransm
 			transmissions: []
 		};
 
-		Api.getTransmissions().then( ( transmissions ) => this.setState( { transmissions } ) );
+		Transmission.find().then( ( transmissions ) => this.setState( { transmissions } ) );
 	}
 
 

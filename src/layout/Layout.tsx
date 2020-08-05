@@ -17,8 +17,8 @@ import FooterCopyrightText from 'layout/FooterCopyrightText';
 import NewsletterForm from 'layout/NewsletterForm';
 
 import 'scss/layout/Layout.scss';
-import Api from 'Api';
 import { IGame } from 'DataTypes';
+import Game from "../models/Game";
 
 export default class Layout extends React.Component<{}, { games: IGame[] }>
 {
@@ -62,7 +62,7 @@ export default class Layout extends React.Component<{}, { games: IGame[] }>
 			games: []
 		};
 
-		Api.getGames().then( ( games: IGame[] ) => this.setState( { games } ) );
+		Game.find({limit: [0, 5]}).then( ( games: IGame[] ) => this.setState( { games } ) );
 	}
 
 

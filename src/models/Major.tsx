@@ -1,6 +1,5 @@
 import {DatabaseDataObject, ERelationType, TRelations} from "relational-api-database";
-import Comment from "./Comment";
-import Match from "./Match";
+import GameMatch from "./GameMatch";
 
 export default class Major extends DatabaseDataObject<Major>
 {
@@ -8,7 +7,7 @@ export default class Major extends DatabaseDataObject<Major>
 	public name: string = '';
 	public iconUrl: string = '';
 
-	public matches: Match[] = [];
+	public matches: GameMatch[] = [];
 
 	static tableName(): string
 	{
@@ -20,7 +19,7 @@ export default class Major extends DatabaseDataObject<Major>
 		return {
 			matches: {
 				type: ERelationType.ONE_MANY,
-				model: Match,
+				model: GameMatch,
 				relation: {id: 'majorId'}
 			}
 		};

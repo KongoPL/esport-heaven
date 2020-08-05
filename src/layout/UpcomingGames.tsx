@@ -2,7 +2,7 @@ import React from 'react';
 
 import 'scss/layout/UpcomingGames.scss';
 import { IMatch } from 'DataTypes';
-import Api from 'Api';
+import GameMatch from '../models/GameMatch'
 import {Link} from "react-router-dom";
 
 export default class UpcomingGames extends React.Component<{}, { games: IMatch[] }>
@@ -15,7 +15,7 @@ export default class UpcomingGames extends React.Component<{}, { games: IMatch[]
 			games: []
 		};
 
-		Api.getMatches().then( ( games ) => this.setState( { games } ) );
+		GameMatch.find().then( ( games ) => this.setState( { games } ) );
 	}
 
 	render()
