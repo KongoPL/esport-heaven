@@ -1,11 +1,9 @@
 import React from 'react';
-
-import { INews } from "DataTypes";
-
-import 'scss/components/NewsList.scss';
 import {Link} from "react-router-dom";
+import News from "../models/News";
+import 'scss/components/NewsList.scss';
 
-export default class NewsList extends React.Component<{ displayMainNews?: boolean, mainNewsDisplayType?: string, data: INews[] }>
+export default class NewsList extends React.Component<{ displayMainNews?: boolean, mainNewsDisplayType?: string, data: News[] }>
 {
 	render()
 	{
@@ -23,7 +21,7 @@ export default class NewsList extends React.Component<{ displayMainNews?: boolea
 }
 
 
-function MainNews( props: { data: INews } )
+function MainNews( props: { data: News } )
 {
 	return (
 		<div className="news main">
@@ -43,7 +41,7 @@ function MainNews( props: { data: INews } )
 }
 
 
-function DefaultNews( props: { data: INews } )
+function DefaultNews( props: { data: News } )
 {
 	return (
 		<div className="news">

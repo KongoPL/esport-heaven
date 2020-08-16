@@ -14,8 +14,8 @@ export default class GameMatch extends DatabaseDataObject<GameMatch>
 	public majorId: number = 0;
 	public transmissionChannelId: string = '';
 
-	public teamA: Team | null = null;
-	public teamB: Team | null = null;
+	public teamA: Team = new Team();
+	public teamB: Team = new Team();
 	public major: Major | null = null;
 	public maps: MatchMap[] = [];
 
@@ -30,17 +30,19 @@ export default class GameMatch extends DatabaseDataObject<GameMatch>
 			teamA: {
 				type: ERelationType.ONE_ONE,
 				model: Team,
-				relation: {teamAId: 'id'}
+				relation: {teamAId: 'id'},
+				loading: 'eager'
 			},
 			teamB: {
 				type: ERelationType.ONE_ONE,
 				model: Team,
-				relation: {teamBId: 'id'}
+				relation: {teamBId: 'id'},
+				loading: 'eager'
 			},
 			major: {
 				type: ERelationType.ONE_ONE,
 				model: Major,
-				relation: {majorId: 'id'}
+				relation: {majorId: 'id'},
 			},
 			maps: {
 				type: ERelationType.ONE_MANY,

@@ -1,13 +1,14 @@
 import React from 'react';
-import {IComment, INews} from 'DataTypes';
-import Api from 'Api';
 import NewsList from 'components/NewsList';
 import SubpageBox from 'components/SubpageBox';
 import Moment from 'moment';
+import NewsModel from 'models/News';
+import CommentModel from "models/Comment";
+
 
 import 'scss/pages/news.scss';
 
-export default class News extends React.Component<{id: string}, { newsList: INews[], news: INews | null }>
+export default class News extends React.Component<{id: string}, { newsList: NewsModel[], news: NewsModel | null }>
 {
 	constructor( props: any )
 	{
@@ -18,16 +19,29 @@ export default class News extends React.Component<{id: string}, { newsList: INew
 			news: null
 		};
 
+		NewsModel.find({
+			conditions: {
+				gameId: 1
+			},
+			limit: [1, 4]
+		}).then( ( newsList ) => this.setState( { newsList } ) );
 
-		Api.getNewsList(0).then( ( newsList ) => this.setState( { newsList: newsList.slice(1, 5) } ) );
-		Api.getNewsById(this.props.id).then((news: INews) => this.setState({news}));
+		NewsModel.findOne({
+			conditions: {id: this.props.id},
+			with: 'game'
+		})
+			.then((news: NewsModel) => this.setState({news}));
 	}
 
 
-	componentDidUpdate(prevProps: Readonly<{ id: string }>, prevState: Readonly<{ newsList: INews[]; news: INews | null }>, snapshot?: any): void
+	componentDidUpdate(prevProps: Readonly<{ id: string }>, prevState: Readonly<{ newsList: NewsModel[]; news: NewsModel | null }>, snapshot?: any): void
 	{
 		if(prevProps.id != this.props.id)
-			Api.getNewsById(this.props.id).then((news: INews) => this.setState({news}));
+			NewsModel.findOne({
+				conditions: {id: this.props.id},
+				with: 'game'
+			})
+				.then((news: NewsModel) => this.setState({news}));
 	}
 
 
@@ -67,7 +81,7 @@ export default class News extends React.Component<{id: string}, { newsList: INew
 
 
 
-function Comment(props: IComment)
+function Comment(props: CommentModel)
 {
 	return <div className="comment">
 		<div className="avatar">

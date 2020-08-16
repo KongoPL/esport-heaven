@@ -1,10 +1,9 @@
 import React from 'react';
 import SubpageBox from 'components/SubpageBox';
 import TwitchTransmission from "../../components/TwitchTransmission";
-import {ITransmission} from "../../DataTypes";
-import Api from "../../Api";
+import TransmissionModel from 'models/Transmission';
 
-export default class Transmission extends React.Component<{id: string}, {transmission: ITransmission | null}>
+export default class Transmission extends React.Component<{id: string}, {transmission: TransmissionModel | null}>
 {
 	constructor(props: any)
 	{
@@ -14,13 +13,13 @@ export default class Transmission extends React.Component<{id: string}, {transmi
 			transmission: null
 		}
 
-		Api.getTransmissionById(this.props.id).then((transmission: any) => this.setState({transmission}));
+		TransmissionModel.findOneByAttributes({id: this.props.id}).then((transmission: any) => this.setState({transmission}));
 	}
 
-	componentDidUpdate(prevProps: Readonly<{ id: string }>, prevState: Readonly<{ transmission: ITransmission | null }>, snapshot?: any): void
+	componentDidUpdate(prevProps: Readonly<{ id: string }>, prevState: Readonly<{ transmission: TransmissionModel | null }>, snapshot?: any): void
 	{
 		if(this.props.id != prevProps.id)
-			Api.getTransmissionById(this.props.id).then((transmission: any) => this.setState({transmission}));
+			TransmissionModel.findOneByAttributes({id: this.props.id}).then((transmission: any) => this.setState({transmission}));
 	}
 
 	render()

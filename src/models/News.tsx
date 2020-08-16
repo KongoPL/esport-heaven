@@ -1,5 +1,6 @@
 import {DatabaseDataObject, ERelationType, TRelations} from "relational-api-database";
 import Comment from "./Comment";
+import Game from "./Game";
 
 export default class News extends DatabaseDataObject<News>
 {
@@ -10,6 +11,7 @@ export default class News extends DatabaseDataObject<News>
 	public content: string = '';
 	public createDate: string = '';
 
+	public game: Game | null = null;
 	public comments: Comment[] = [];
 
 	static tableName(): string

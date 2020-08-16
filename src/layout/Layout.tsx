@@ -17,10 +17,9 @@ import FooterCopyrightText from 'layout/FooterCopyrightText';
 import NewsletterForm from 'layout/NewsletterForm';
 
 import 'scss/layout/Layout.scss';
-import { IGame } from 'DataTypes';
 import Game from "../models/Game";
 
-export default class Layout extends React.Component<{}, { games: IGame[] }>
+export default class Layout extends React.Component<{}, { games: Game[] }>
 {
 	private mainLinks = [
 		<Link to="/">Main page</Link>,
@@ -62,15 +61,15 @@ export default class Layout extends React.Component<{}, { games: IGame[] }>
 			games: []
 		};
 
-		Game.find({limit: [0, 5]}).then( ( games: IGame[] ) => this.setState( { games } ) );
+		Game.find({limit: [0, 5]}).then( ( games: Game[] ) => this.setState( { games } ) );
 	}
 
 
 	render()
 	{
-		const subLinks = this.state.games.map( ( game: IGame ) => <GameLink iconUrl={game.icon} name={game.nameShort} /> );
+		const subLinks = this.state.games.map( ( game: Game ) => <GameLink iconUrl={game.icon} name={game.nameShort} /> );
 
-		this.footerLinks[1].links = this.state.games.map( ( game: IGame ) => <a href="#">{game.name}</a> );
+		this.footerLinks[1].links = this.state.games.map( ( game: Game ) => <a href="#">{game.name}</a> );
 
 		return (
 			<>

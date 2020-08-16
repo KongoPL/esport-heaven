@@ -1,12 +1,10 @@
 import React from 'react';
 
 import 'scss/layout/LiveTransmissions.scss';
-import Api from 'Api';
-import { ITransmission } from 'DataTypes';
 import {Link} from "react-router-dom";
 import Transmission from "../models/Transmission";
 
-export default class Matchs extends React.Component<{}, { transmissions: ITransmission[] }>
+export default class Matchs extends React.Component<{}, { transmissions: Transmission[] }>
 {
 	constructor( props: any )
 	{
@@ -37,7 +35,7 @@ export default class Matchs extends React.Component<{}, { transmissions: ITransm
 }
 
 
-function LiveTransmission( props: { data: ITransmission } )
+function LiveTransmission( props: { data: Transmission } )
 {
 	return (
 		<div className="live-transmission">

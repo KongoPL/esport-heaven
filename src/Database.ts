@@ -171,7 +171,7 @@ export const Database = {
 			"name": "Inferno",
 			"iconUrl": "/images/maps/0/mirage.png"
 		}, {
-			"id": 1,
+			"id": 3,
 			"gameId": 1,
 			"name": "Cache",
 			"iconUrl": "/images/maps/0/mirage.png"

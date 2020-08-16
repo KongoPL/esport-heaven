@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { INews } from 'DataTypes';
 import 'scss/pages/index.scss';
-import Api from 'Api';
 import NewsList from 'components/NewsList';
 import News from "../../models/News";
 
@@ -78,8 +76,8 @@ export default class Index extends React.Component<{}, IIndexState>
 
 interface IIndexState
 {
-	newsListMain: INews[],
-	newsListOther: INews[],
+	newsListMain: News[],
+	newsListOther: News[],
 	loadedNewsCount: number,
 	displayLoadMoreButton: boolean
 }

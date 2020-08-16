@@ -2,12 +2,11 @@ import React from 'react';
 import SubpageBox from 'components/SubpageBox';
 import TwitchTransmission from "components/TwitchTransmission";
 import 'scss/pages/game.scss';
-import Api from "../../Api";
-import {IMatch} from "../../DataTypes";
 import TeamLogo from "../../components/TeamLogo";
+import GameMatch from "../../models/GameMatch";
 
 
-export default class Game extends React.Component<{id: number}, {match: IMatch | null}>
+export default class Game extends React.Component<{id: number}, {match: GameMatch | null}>
 {
 	constructor(props: any)
 	{
@@ -17,14 +16,14 @@ export default class Game extends React.Component<{id: number}, {match: IMatch |
 			match: null
 		};
 
-		Api.getMatchById(this.props.id).then((match) => this.setState({match}));
+		GameMatch.findOneByAttributes({id: this.props.id}).then((match) => this.setState({match}));
 	}
 
-	componentDidUpdate(prevProps: Readonly<{ id: number }>, prevState: Readonly<{ match: IMatch }>, snapshot?: any): void
+	componentDidUpdate(prevProps: Readonly<{ id: number }>, prevState: Readonly<{ match: GameMatch }>, snapshot?: any): void
 	{
 		if(this.props.id != prevProps.id)
 		{
-			Api.getMatchById(this.props.id).then((match) => this.setState({match}));
+			GameMatch.findOneByAttributes({id: this.props.id}).then((match) => this.setState({match}));
 		}
 	}
 
@@ -39,7 +38,7 @@ export default class Game extends React.Component<{id: number}, {match: IMatch |
 			<h2 className="no-margin">{match.title}</h2>
 			<section className="game-overview">
 				<h3>Game's overview</h3>
-				<GameOverview {...match}/>
+				<GameOverview match={match}/>
 			</section>
 			<section className="transmission">
 				<h3>Match transmission</h3>
@@ -50,8 +49,10 @@ export default class Game extends React.Component<{id: number}, {match: IMatch |
 }
 
 
-function GameOverview(match: IMatch)
+function GameOverview(props: {match: GameMatch})
 {
+	const match = props.match;
+
 	return <div className="game-overview">
 		<div className="teams-score">
 			<TeamDescription name={match.teamA.name} image={match.teamA.imageUrl} className="team-a" />

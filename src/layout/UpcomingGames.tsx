@@ -1,11 +1,10 @@
 import React from 'react';
 
 import 'scss/layout/UpcomingGames.scss';
-import { IMatch } from 'DataTypes';
 import GameMatch from '../models/GameMatch'
 import {Link} from "react-router-dom";
 
-export default class UpcomingGames extends React.Component<{}, { games: IMatch[] }>
+export default class UpcomingGames extends React.Component<{}, { games: GameMatch[] }>
 {
 	constructor( props: any )
 	{
@@ -33,7 +32,7 @@ export default class UpcomingGames extends React.Component<{}, { games: IMatch[]
 }
 
 
-function Match( props: { game: IMatch } )
+function Match( props: { game: GameMatch } )
 {
 	return (
 		<Link to={`/game/${props.game.id}`}>

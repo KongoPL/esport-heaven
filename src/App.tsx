@@ -6,7 +6,6 @@ import Index from 'pages/index/Index';
 import News from 'pages/news/News';
 import Transmission from "./pages/transmission/Transmission";
 import Game from "./pages/game/Game";
-import Api from "./Api";
 import UpcomingGames from "./pages/upcoming-games/UpcomingGames";
 import PageNotFound from "./pages/page-not-found/PageNotFound";
 import Lipsum from "./pages/lipsum/Lipsum";
@@ -28,9 +27,6 @@ const App: React.FC = () =>
 	const db = new Database(memoryApi);
 
 	DatabaseDataObject.injectDatabase(db);
-
-
-	Api.init();
 
 	return (
 			<BrowserRouter>
