@@ -3,6 +3,7 @@ import React from 'react';
 import 'scss/pages/index.scss';
 import NewsList from 'components/NewsList';
 import News from "../../models/News";
+import Config from "../../Config";
 
 export default class Index extends React.Component<{}, IIndexState>
 {
@@ -13,6 +14,7 @@ export default class Index extends React.Component<{}, IIndexState>
 		this.state = {
 			newsListMain: [],
 			newsListOther: [],
+			gameId: null,
 			loadedNewsCount: 10,
 			displayLoadMoreButton: true
 		};
@@ -20,21 +22,29 @@ export default class Index extends React.Component<{}, IIndexState>
 		this.loadNews();
 	}
 
+	componentDidMount(): void
+	{
+		Config.getGameId((gameId) => {
+			this.setState({ gameId });
+		});
+	}
+
 	componentDidUpdate(prevProps: Readonly<{}>, prevState: Readonly<IIndexState>, snapshot?: any): void
 	{
-		if(prevState.loadedNewsCount != this.state.loadedNewsCount)
+		if(prevState.loadedNewsCount != this.state.loadedNewsCount
+			|| prevState.gameId != this.state.gameId)
 			this.loadNews();
 	}
 
 	private loadNews()
 	{
-		// this.state.loadedNewsCount
+		let conditions: any = {};
 
-		News.findByAttributes({gameId: 1}).then( ( newsList ) =>
+		if(this.state.gameId !== null)
+			conditions.gameId = this.state.gameId;
+
+		News.findByAttributes(conditions).then( ( newsList ) =>
 		{
-			if(!newsList)
-				return;
-
 			this.setState( {
 				newsListMain: newsList.slice(0, 5),
 				newsListOther: newsList.slice(5, this.state.loadedNewsCount),
@@ -78,6 +88,7 @@ interface IIndexState
 {
 	newsListMain: News[],
 	newsListOther: News[],
+	gameId: number | null,
 	loadedNewsCount: number,
 	displayLoadMoreButton: boolean
 }

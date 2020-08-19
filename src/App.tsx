@@ -13,7 +13,7 @@ import Lipsum from "./pages/lipsum/Lipsum";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Contact from "./pages/contact/Contact";
-import {Database as dbData}  from "./Database";
+import {Database as dbData}  from "./data/Database";
 import {Database, DatabaseDataObject, MemoryApi} from "relational-api-database";
 
 

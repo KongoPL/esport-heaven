@@ -18,6 +18,7 @@ import NewsletterForm from 'layout/NewsletterForm';
 
 import 'scss/layout/Layout.scss';
 import Game from "../models/Game";
+import Config from "../Config";
 
 export default class Layout extends React.Component<{}, { games: Game[] }>
 {
@@ -67,7 +68,7 @@ export default class Layout extends React.Component<{}, { games: Game[] }>
 
 	render()
 	{
-		const subLinks = this.state.games.map( ( game: Game ) => <GameLink iconUrl={game.icon} name={game.nameShort} /> );
+		const subLinks = this.state.games.map( ( game: Game ) => <GameLink id={game.id} iconUrl={game.icon} name={game.nameShort} /> );
 
 		this.footerLinks[1].links = this.state.games.map( ( game: Game ) => <a href="#">{game.name}</a> );
 
@@ -103,10 +104,12 @@ export default class Layout extends React.Component<{}, { games: Game[] }>
 }
 
 
-function GameLink( props: { iconUrl: string, name: string } )
+function GameLink( props: { id: number, iconUrl: string, name: string } )
 {
+	const changeGame = () => Config.setGameId(props.id);
+
 	return (
-		<Link to="/">
+		<Link to="/" onClick={changeGame}>
 			<img src={props.iconUrl} />
 			{props.name}
 		</Link>
