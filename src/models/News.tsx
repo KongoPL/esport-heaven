@@ -26,6 +26,11 @@ export default class News extends DatabaseDataObject<News>
 				type: ERelationType.ONE_MANY,
 				model: Comment,
 				relation: {id: 'newsId'}
+			},
+			game: {
+				type: ERelationType.ONE_ONE,
+				model: Game,
+				relation: {gameId: 'id'}
 			}
 		};
 	}

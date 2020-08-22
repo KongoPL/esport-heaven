@@ -7,8 +7,9 @@ import CommentModel from "models/Comment";
 
 
 import 'scss/pages/news.scss';
+import Config from "../../Config";
 
-export default class News extends React.Component<{id: string}, { newsList: NewsModel[], news: NewsModel | null }>
+export default class News extends React.Component<TNewsProps, TNewsState>
 {
 	constructor( props: any )
 	{
@@ -16,32 +17,49 @@ export default class News extends React.Component<{id: string}, { newsList: News
 
 		this.state = {
 			newsList: [],
-			news: null
+			news: null,
+			gameId: null
 		};
-
-		NewsModel.find({
-			conditions: {
-				gameId: 1
-			},
-			limit: [1, 4]
-		}).then( ( newsList ) => this.setState( { newsList } ) );
 
 		NewsModel.findOne({
 			conditions: {id: this.props.id},
 			with: 'game'
 		})
 			.then((news: NewsModel) => this.setState({news}));
+
+		this.findRelatedNews();
+
+		Config.getGameId((gameId) => this.setState({gameId}));
 	}
 
 
-	componentDidUpdate(prevProps: Readonly<{ id: string }>, prevState: Readonly<{ newsList: NewsModel[]; news: NewsModel | null }>, snapshot?: any): void
+	protected findRelatedNews()
+	{
+		let conditions: any = {};
+
+		if(this.state.gameId !== null)
+			conditions.gameId = this.state.gameId;
+
+		NewsModel.find({
+			conditions: conditions,
+			limit: [1, 4]
+		}).then( ( newsList ) => this.setState( { newsList } ) );
+	}
+
+
+	componentDidUpdate(prevProps: Readonly<TNewsProps>, prevState: Readonly<TNewsState>, snapshot?: any): void
 	{
 		if(prevProps.id != this.props.id)
+		{
 			NewsModel.findOne({
 				conditions: {id: this.props.id},
 				with: 'game'
 			})
 				.then((news: NewsModel) => this.setState({news}));
+		}
+
+		if(prevState.gameId != this.state.gameId)
+			this.findRelatedNews();
 	}
 
 
@@ -78,6 +96,16 @@ export default class News extends React.Component<{id: string}, { newsList: News
 		</>;
 	}
 }
+
+type TNewsProps = {
+	id: string
+};
+
+type TNewsState = {
+	newsList: NewsModel[],
+	news: NewsModel | null,
+	gameId: number | null
+};
 
 
 

@@ -6,22 +6,54 @@ import {Link} from "react-router-dom";
 import TeamLogo from "../../components/TeamLogo";
 import GameMatch from "../../models/GameMatch";
 import MajorModel from "../../models/Major";
+import Config from "../../Config";
 
-export default class UpcomingGames extends React.Component<any, {majors: MajorModel[]}>
+export default class UpcomingGames extends React.Component<any, {majors: MajorModel[], gameId: number | null}>
 {
 	constructor( props: any )
 	{
 		super( props );
 
 		this.state = {
-			majors: []
+			majors: [],
+			gameId: null
 		};
 	}
 
 	componentDidMount(): void
 	{
-		MajorModel.find().then((majors) =>
+		Config.getGameId((gameId: number | null) => this.setState({ gameId }));
+	}
+
+	componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<{ majors: MajorModel[], gameId: number | null }>, snapshot?: any): void
+	{
+		if(prevState.gameId != this.state.gameId || this.state.majors.length === 0)
+			this.fetchMajors();
+	}
+
+
+	protected fetchMajors()
+	{
+		let conditions: any = {};
+
+		if(this.state.gameId !== null)
+			conditions.gameId = this.state.gameId;
+
+		console.log(conditions)
+
+		MajorModel.find({
+			conditions: conditions,
+			with: 'matches'
+		}).then(async (majors) =>
 		{
+			const mapsPromises: any[] = [];
+
+			for(let major of majors)
+				for(let match of major.matches)
+					mapsPromises.push(match.getRelation('maps'));
+
+			await Promise.all(mapsPromises);
+
 			this.setState({ majors });
 		});
 	}
@@ -31,7 +63,9 @@ export default class UpcomingGames extends React.Component<any, {majors: MajorMo
 		return <>
 			<SubpageBox>
 				<h2 className="no-margin">Upcoming Games</h2>
-				{this.state.majors.map((major) => <Major key={major.id} major={major} />)}
+				{this.state.majors.length > 0 ?
+					this.state.majors.map((major) => <Major key={major.id} major={major} />)
+					: <p>There are currently no upcoming games!</p>}
 			</SubpageBox>
 		</>;
 	}

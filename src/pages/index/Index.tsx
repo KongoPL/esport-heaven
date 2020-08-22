@@ -43,7 +43,10 @@ export default class Index extends React.Component<{}, IIndexState>
 		if(this.state.gameId !== null)
 			conditions.gameId = this.state.gameId;
 
-		News.findByAttributes(conditions).then( ( newsList ) =>
+		News.find({
+			conditions,
+			limit: [0, this.state.loadedNewsCount]
+		}).then( ( newsList ) =>
 		{
 			this.setState( {
 				newsListMain: newsList.slice(0, 5),
@@ -64,7 +67,10 @@ export default class Index extends React.Component<{}, IIndexState>
 	{
 		return (
 			<>
-				<NewsList mainNewsDisplayType="wide" data={this.state.newsListMain} />
+				{this.state.newsListMain.length > 0 ?
+					<NewsList mainNewsDisplayType="wide" data={this.state.newsListMain} />
+					: <p className="box subpage-box"><h3>No news found for this game!</h3></p>
+				}
 
 				<div className="google-ad-news">
 					<img src="/images/ad.png" style={{ width: '100%' }} alt="" />
@@ -74,7 +80,7 @@ export default class Index extends React.Component<{}, IIndexState>
 					<img src="/images/contest.png" style={{ width: '100%' }} alt="" />
 				</div>
 
-				<NewsList mainNewsDisplayType="side" data={this.state.newsListOther} />
+				{this.state.newsListOther.length > 0 ? <NewsList mainNewsDisplayType="side" data={this.state.newsListOther} /> : false}
 
 				{this.state.displayLoadMoreButton && <div className="text-center">
 					<a className="btn large" onClick={() => this.loadMoreNews(5)}>Load more</a>

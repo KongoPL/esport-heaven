@@ -42,7 +42,7 @@ function LiveTransmission( props: { data: Transmission } )
 			<div className="icon"><img src={props.data.iconUrl} /></div>
 			<div className="title text-truncate"><Link to={`/transmission/${props.data.id}`}>{props.data.title}</Link></div>
 			<div className="subtitle text-truncate">{props.data.author}</div>
-			<div className="views">{props.data.views}</div>
+			<div className="views">{props.data.viewsFormatted}</div>
 		</div>
 	);
 }

@@ -4,6 +4,7 @@ import GameMatch from "./GameMatch";
 export default class Major extends DatabaseDataObject<Major>
 {
 	public id: number = 0;
+	public gameId: number = 0;
 	public name: string = '';
 	public iconUrl: string = '';
 
@@ -20,7 +21,7 @@ export default class Major extends DatabaseDataObject<Major>
 			matches: {
 				type: ERelationType.ONE_MANY,
 				model: GameMatch,
-				relation: {id: 'majorId'}
+				relation: {id: 'majorId'},
 			}
 		};
 	}

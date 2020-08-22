@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 
 import PageHeader from 'layout/PageHeader';
@@ -27,7 +27,6 @@ export default class Layout extends React.Component<{}, { games: Game[] }>
 		<Link to="/upcoming-games">Upcoming games</Link>,
 		<Link to="/live-transmissions">Live transmissions</Link>,
 		<Link to="/contact">Contact</Link>,
-		<Link to="/">My Account</Link>
 	];
 
 	private footerLinks = [
@@ -76,7 +75,7 @@ export default class Layout extends React.Component<{}, { games: Game[] }>
 			<>
 				<PageHeader>
 					<Logo />
-					<Menu mainLinks={this.mainLinks} mainLinksLastFloatRight subLinks={subLinks} />
+					<Menu mainLinks={this.mainLinks} subLinks={subLinks} />
 				</PageHeader>
 				<div className="left-column">
 					{this.props.children}
@@ -106,10 +105,18 @@ export default class Layout extends React.Component<{}, { games: Game[] }>
 
 function GameLink( props: { id: number, iconUrl: string, name: string } )
 {
-	const changeGame = () => Config.setGameId(props.id);
+	const [gameId, setGameId] = useState<number | null>(null);
+	const changeGame = () => {
+		if(gameId == props.id)
+			Config.setGameId(null);
+		else
+			Config.setGameId(props.id);
+	};
+
+	Config.getGameId((v) => v != gameId && setGameId(v));
 
 	return (
-		<Link to="/" onClick={changeGame}>
+		<Link to="/" onClick={changeGame} className={props.id == gameId ? 'active' : ''}>
 			<img src={props.iconUrl} />
 			{props.name}
 		</Link>
