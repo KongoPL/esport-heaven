@@ -4,7 +4,7 @@ It's a simple website made for learning react.
 ## What I've learned?
 - React
 - Firebase realtime database (just a little, but I decided to get rid of it as it didn't meet my needs)
-- 
+- Adobe XD (all designs were made by me from scratch)
 
 ## Pages preview
 ![](https://raw.githubusercontent.com/KongoPL/esport-heaven/master/preview/main-page.png)
