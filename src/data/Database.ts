@@ -156,6 +156,7 @@ export const Database = {
 			"author": "Izak TV",
 			"channelId": "izakooo",
 			"iconUrl": "/images/transmission-icon.png",
+			"previewUrl": "/images/transmission-preview.jpg",
 			"views": 445000
 		}
 	],
@@ -207,6 +208,7 @@ export const Database = {
 	"majors": [
 		{
 			"id": 1,
+			"gameId": 1,
 			"name": "CS:GO Major League Boston 2020",
 			"iconUrl": "/images/majors/boston-2020.png"
 		}

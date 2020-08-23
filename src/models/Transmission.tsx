@@ -1,4 +1,5 @@
-import {DatabaseDataObject} from "relational-api-database";
+import {DatabaseDataObject, ERelationType, TRelations} from "relational-api-database";
+import Game from "./Game";
 
 export default class Transmission extends DatabaseDataObject<Transmission>
 {
@@ -11,9 +12,23 @@ export default class Transmission extends DatabaseDataObject<Transmission>
 	public previewUrl: string = '';
 	public views: number = 0;
 
+	public game: Game | null = null;
+
 	static tableName(): string
 	{
 		return 'transmissions';
+	}
+
+	protected relations(): TRelations
+	{
+		return {
+			game: {
+				type: ERelationType.ONE_ONE,
+				model: Game,
+				relation: {gameId: 'id'},
+				loading: 'lazy'
+			}
+		};
 	}
 
 	get viewsFormatted(): string | number

@@ -69,7 +69,7 @@ export default class Layout extends React.Component<{}, { games: Game[] }>
 	{
 		const subLinks = this.state.games.map( ( game: Game ) => <GameLink id={game.id} iconUrl={game.icon} name={game.nameShort} /> );
 
-		this.footerLinks[1].links = this.state.games.map( ( game: Game ) => <a href="#">{game.name}</a> );
+		this.footerLinks[1].links = this.state.games.map( ( game: Game ) => <GameLink simple id={game.id} iconUrl={game.icon} name={game.nameShort} /> );
 
 		return (
 			<>
@@ -103,7 +103,7 @@ export default class Layout extends React.Component<{}, { games: Game[] }>
 }
 
 
-function GameLink( props: { id: number, iconUrl: string, name: string } )
+function GameLink( props: { simple?: boolean, id: number, iconUrl: string, name: string } )
 {
 	const [gameId, setGameId] = useState<number | null>(null);
 	const changeGame = () => {
@@ -117,7 +117,7 @@ function GameLink( props: { id: number, iconUrl: string, name: string } )
 
 	return (
 		<Link to="/" onClick={changeGame} className={props.id == gameId ? 'active' : ''}>
-			<img src={props.iconUrl} />
+			{props.simple ? false : <img src={props.iconUrl} />}
 			{props.name}
 		</Link>
 	);
